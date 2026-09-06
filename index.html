@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>فلسطين | المنصة الفلسطينية الشاملة</title>
+
+  <meta name="description" content="منصة فلسطينية تجمع الخدمات والإعلانات والمحلات والعقارات والوظائف والسيارات في مكان واحد">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #374151);
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      margin-bottom: 30px;
+      color: #d1d5db;
+    }
+
+    .search {
+      max-width: 700px;
+      margin: auto;
+      display: flex;
+      background: white;
+      padding: 6px;
+      border-radius: 12px;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 15px;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .search button {
+      border: none;
+      background: #16a34a;
+      color: white;
+      padding: 0 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 18px;
+    }
+
+    .category {
+      background: white;
+      padding: 28px 15px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,.06);
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .category h3 {
+      margin-bottom: 7px;
+    }
+
+    .category p {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .about {
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      line-height: 1.9;
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: #111827;
+      color: #d1d5db;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      header {
+        justify-content: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .search {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .search button {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🇵🇸 فلسطين</div>
+
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#categories">الأقسام</a>
+    <a href="#about">عن المنصة</a>
+    <a href="#">تسجيل الدخول</a>
+  </nav>
+</header>
+
+<section class="hero">
+
+  <h1>كل فلسطين في مكان واحد</h1>
+
+  <p>
+    منصة فلسطينية تجمع الخدمات والإعلانات والأعمال والفرص
+  </p>
+
+  <div class="search">
+    <input
+      type="text"
+      placeholder="ماذا تبحث في فلسطين؟"
+    >
+
+    <button onclick="searchSite()">
+      بحث
+    </button>
+  </div>
+
+</section>
+
+<section class="section" id="categories">
+
+  <h2>استكشف المنصة</h2>
+
+  <div class="categories">
+
+    <div class="category">
+      <div class="icon">🏪</div>
+      <h3>المحلات</h3>
+      <p>المتاجر والشركات</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🏠</div>
+      <h3>العقارات</h3>
+      <p>بيع وإيجار العقارات</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🚗</div>
+      <h3>السيارات</h3>
+      <p>سيارات للبيع والشراء</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">💼</div>
+      <h3>الوظائف</h3>
+      <p>فرص العمل في فلسطين</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">🛠️</div>
+      <h3>الخدمات</h3>
+      <p>خدمات وأصحاب مهن</p>
+    </div>
+
+    <div class="category">
+      <div class="icon">📢</div>
+      <h3>الإعلانات</h3>
+      <p>إعلانات المستخدمين</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="section" id="about">
+
+  <div class="about">
+
+    <h2>عن المنصة</h2>
+
+    <p>
+      منصة فلسطينية رقمية تهدف إلى جمع الخدمات والأعمال
+      والإعلانات والفرص في مكان واحد، لتسهيل الوصول إلى
+      ما يحتاجه المواطن الفلسطيني.
+    </p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <p>© 2026 منصة فلسطين — جميع الحقوق محفوظة</p>
+
+</footer>
+
+<script>
+  function searchSite() {
+    const search = document.querySelector(".search input").value.trim();
+
+    if (!search) {
+      alert("اكتب ما تريد البحث عنه أولاً");
+      return;
+    }
+
+    alert("سيتم البحث عن: " + search);
+  }
+</script>
+
+</body>
+</html>
