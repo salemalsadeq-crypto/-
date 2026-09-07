@@ -1,304 +1,378 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="المنصة الفلسطينية الشاملة - محلات، عقارات، سيارات، وظائف، خدمات وإعلانات">
+<title>فلسطين | المنصة الفلسطينية الشاملة</title>
 
-  <title>فلسطين | المنصة الفلسطينية الشاملة</title>
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-  <meta name="description" content="منصة فلسطينية تجمع الخدمات والإعلانات والمحلات والعقارات والوظائف والسيارات في مكان واحد">
+body{
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f7fa;
+  color:#172033;
+  line-height:1.7;
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+header{
+  background:#ffffff;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f7fa;
-      color: #222;
-    }
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
 
-    header {
-      background: #111827;
-      color: white;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
+.logo{
+  font-size:23px;
+  font-weight:bold;
+  color:#173b68;
+  white-space:nowrap;
+}
 
-    .logo {
-      font-size: 25px;
-      font-weight: bold;
-    }
+.logo span{
+  color:#b51f2a;
+}
 
-    nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+.login{
+  text-decoration:none;
+  background:#173b68;
+  color:white;
+  padding:9px 18px;
+  border-radius:9px;
+  font-weight:bold;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-    }
+.hero{
+  background:linear-gradient(135deg,#173b68,#245d91);
+  color:white;
+  text-align:center;
+  padding:65px 20px;
+}
 
-    .hero {
-      background: linear-gradient(135deg, #111827, #374151);
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
-    }
+.hero h1{
+  font-size:38px;
+  margin-bottom:12px;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+.hero p{
+  font-size:18px;
+  opacity:.95;
+  margin-bottom:28px;
+}
 
-    .hero p {
-      font-size: 19px;
-      margin-bottom: 30px;
-      color: #d1d5db;
-    }
+.search{
+  max-width:700px;
+  margin:auto;
+  display:flex;
+  background:white;
+  padding:6px;
+  border-radius:12px;
+}
 
-    .search {
-      max-width: 700px;
-      margin: auto;
-      display: flex;
-      background: white;
-      padding: 6px;
-      border-radius: 12px;
-    }
+.search input{
+  flex:1;
+  border:0;
+  outline:0;
+  padding:13px;
+  font-size:16px;
+  min-width:0;
+}
 
-    .search input {
-      flex: 1;
-      border: none;
-      outline: none;
-      padding: 15px;
-      font-size: 16px;
-      color: #222;
-    }
+.search button{
+  border:0;
+  background:#b51f2a;
+  color:white;
+  padding:0 22px;
+  border-radius:9px;
+  font-size:16px;
+  cursor:pointer;
+}
 
-    .search button {
-      border: none;
-      background: #16a34a;
-      color: white;
-      padding: 0 25px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-    }
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:45px 20px;
+}
 
-    .section {
-      max-width: 1100px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
+.title{
+  text-align:center;
+  margin-bottom:30px;
+}
 
-    .section h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
+.title h2{
+  font-size:28px;
+  color:#173b68;
+}
 
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 18px;
-    }
+.title p{
+  color:#687386;
+}
 
-    .category {
-      background: white;
-      padding: 28px 15px;
-      border-radius: 14px;
-      text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,.06);
-      cursor: pointer;
-      transition: .2s;
-    }
+.categories{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
 
-    .category:hover {
-      transform: translateY(-4px);
-    }
+.category{
+  background:white;
+  border-radius:15px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+  cursor:pointer;
+  transition:.2s;
+  border:1px solid #edf0f4;
+}
 
-    .icon {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
+.category:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 25px rgba(0,0,0,.11);
+}
 
-    .category h3 {
-      margin-bottom: 7px;
-    }
+.icon{
+  font-size:40px;
+  margin-bottom:8px;
+}
 
-    .category p {
-      color: #6b7280;
-      font-size: 14px;
-    }
+.category h3{
+  color:#173b68;
+  margin-bottom:5px;
+}
 
-    .about {
-      background: white;
-      padding: 35px;
-      border-radius: 15px;
-      line-height: 1.9;
-      text-align: center;
-    }
+.category p{
+  color:#718096;
+  font-size:14px;
+}
 
-    footer {
-      margin-top: 60px;
-      background: #111827;
-      color: #d1d5db;
-      text-align: center;
-      padding: 30px 15px;
-    }
+.about{
+  background:white;
+  border-radius:18px;
+  padding:35px;
+  margin-top:45px;
+  text-align:center;
+  box-shadow:0 4px 18px rgba(0,0,0,.06);
+}
 
-    @media (max-width: 600px) {
-      .hero h1 {
-        font-size: 30px;
-      }
+.about h2{
+  color:#173b68;
+  margin-bottom:12px;
+}
 
-      .hero p {
-        font-size: 16px;
-      }
+.actions{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:25px;
+  flex-wrap:wrap;
+}
 
-      header {
-        justify-content: center;
-      }
+.action{
+  display:inline-block;
+  padding:11px 20px;
+  border-radius:9px;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-      nav {
-        justify-content: center;
-      }
+.primary{
+  background:#b51f2a;
+  color:white;
+}
 
-      .search {
-        flex-direction: column;
-        gap: 5px;
-      }
+.secondary{
+  background:#edf2f7;
+  color:#173b68;
+}
 
-      .search button {
-        padding: 14px;
-      }
-    }
-  </style>
+footer{
+  background:#14243a;
+  color:white;
+  text-align:center;
+  padding:28px 20px;
+  margin-top:20px;
+}
+
+footer p{
+  opacity:.8;
+  font-size:14px;
+}
+
+@media(max-width:700px){
+  .hero{
+    padding:45px 15px;
+  }
+
+  .hero h1{
+    font-size:29px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .categories{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .category{
+    padding:22px 10px;
+  }
+
+  .icon{
+    font-size:34px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .login{
+    padding:8px 12px;
+    font-size:14px;
+  }
+
+  .search button{
+    padding:0 14px;
+  }
+}
+
+@media(max-width:400px){
+  .categories{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">🇵🇸 فلسطين</div>
-
-  <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#categories">الأقسام</a>
-    <a href="#about">عن المنصة</a>
-    <a href="#">تسجيل الدخول</a>
-  </nav>
+  <div class="nav">
+    <div class="logo">فلسطين <span>بلاتفورم</span></div>
+    <a href="#" class="login" onclick="loginMessage()">تسجيل الدخول</a>
+  </div>
 </header>
 
 <section class="hero">
-
-  <h1>كل فلسطين في مكان واحد</h1>
-
-  <p>
-    منصة فلسطينية تجمع الخدمات والإعلانات والأعمال والفرص
-  </p>
+  <h1>🇵🇸 كل فلسطين في مكان واحد</h1>
+  <p>اكتشف المحلات والعقارات والسيارات والوظائف والخدمات والإعلانات في فلسطين</p>
 
   <div class="search">
-    <input
-      type="text"
-      placeholder="ماذا تبحث في فلسطين؟"
-    >
-
-    <button onclick="searchSite()">
-      بحث
-    </button>
+    <input id="searchInput" type="text" placeholder="ماذا تبحث عنه؟">
+    <button onclick="searchSite()">بحث</button>
   </div>
-
 </section>
 
-<section class="section" id="categories">
+<main class="container">
 
-  <h2>استكشف المنصة</h2>
+  <div class="title">
+    <h2>استكشف المنصة</h2>
+    <p>اختر القسم الذي تريد الوصول إليه</p>
+  </div>
 
   <div class="categories">
 
-    <div class="category">
+    <div class="category" onclick="openCategory('المحلات')">
       <div class="icon">🏪</div>
       <h3>المحلات</h3>
-      <p>المتاجر والشركات</p>
+      <p>محلات ومتاجر وشركات</p>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="openCategory('العقارات')">
       <div class="icon">🏠</div>
       <h3>العقارات</h3>
       <p>بيع وإيجار العقارات</p>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="openCategory('السيارات')">
       <div class="icon">🚗</div>
       <h3>السيارات</h3>
       <p>سيارات للبيع والشراء</p>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="openCategory('الوظائف')">
       <div class="icon">💼</div>
       <h3>الوظائف</h3>
-      <p>فرص العمل في فلسطين</p>
+      <p>وظائف وفرص عمل</p>
     </div>
 
-    <div class="category">
-      <div class="icon">🛠️</div>
+    <div class="category" onclick="openCategory('الخدمات')">
+      <div class="icon">🔧</div>
       <h3>الخدمات</h3>
-      <p>خدمات وأصحاب مهن</p>
+      <p>حرفيون ومقدمو خدمات</p>
     </div>
 
-    <div class="category">
+    <div class="category" onclick="openCategory('الإعلانات')">
       <div class="icon">📢</div>
       <h3>الإعلانات</h3>
-      <p>إعلانات المستخدمين</p>
+      <p>إعلانات متنوعة من فلسطين</p>
     </div>
 
   </div>
 
-</section>
-
-<section class="section" id="about">
-
-  <div class="about">
-
+  <section class="about">
     <h2>عن المنصة</h2>
-
     <p>
-      منصة فلسطينية رقمية تهدف إلى جمع الخدمات والأعمال
-      والإعلانات والفرص في مكان واحد، لتسهيل الوصول إلى
-      ما يحتاجه المواطن الفلسطيني.
+      منصة فلسطينية شاملة تهدف إلى جمع الخدمات التجارية
+      والإعلانات والفرص والمعلومات في مكان واحد، لتسهيل
+      الوصول بين المواطنين وأصحاب الأعمال في جميع أنحاء فلسطين.
     </p>
 
-  </div>
+    <div class="actions">
+      <a href="#" class="action primary" onclick="addAd()">➕ أضف إعلانك</a>
+      <a href="#" class="action secondary" onclick="loginMessage()">👤 إنشاء حساب</a>
+    </div>
+  </section>
 
-</section>
+</main>
 
 <footer>
-
-  <p>© 2026 منصة فلسطين — جميع الحقوق محفوظة</p>
-
+  <p>© 2026 فلسطين بلاتفورم — المنصة الفلسطينية الشاملة</p>
 </footer>
 
 <script>
-  function searchSite() {
-    const search = document.querySelector(".search input").value.trim();
 
-    if (!search) {
-      alert("اكتب ما تريد البحث عنه أولاً");
-      return;
-    }
+function searchSite(){
+  const value = document.getElementById("searchInput").value.trim();
 
-    alert("سيتم البحث عن: " + search);
+  if(value === ""){
+    alert("اكتب ما تريد البحث عنه أولاً");
+    return;
   }
+
+  alert("سيتم البحث عن: " + value + "\n\nميزة البحث المتقدم سنربطها بقاعدة البيانات لاحقًا.");
+}
+
+function openCategory(category){
+  alert("قسم " + category + " جاهز للتطوير.\nسنضيف داخله الإعلانات والبيانات قريبًا.");
+}
+
+function loginMessage(){
+  alert("صفحة تسجيل الدخول سننشئها في الخطوة القادمة.");
+}
+
+function addAd(){
+  alert("صفحة إضافة الإعلان سننشئها بعد إعداد تسجيل المستخدمين وقاعدة البيانات.");
+}
+
 </script>
 
 </body>
