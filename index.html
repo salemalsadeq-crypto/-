@@ -265,7 +265,68 @@ footer {
     © 2026 فلسطين بلاتفورم - جميع الحقوق محفوظة
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+const SUPABASE_URL = "https://sesbumfedusbjevbsyzl.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+async function createAccount(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+        alert("كلمتا المرور غير متطابقتين");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("كلمة المرور يجب أن تكون 6 أحرف أو أكثر");
+        return;
+    }
+
+    try {
+
+        const { data, error } = await supabaseClient.auth.signUp({
+            email: email,
+            password: password,
+            options: {
+                data: {
+                    name: name
+                }
+            }
+        });
+
+        if (error) {
+            alert("حدث خطأ: " + error.message);
+            return;
+        }
+
+        alert("تم إنشاء الحساب بنجاح 🎉");
+
+        window.location.href = "login.html";
+
+    } catch (error) {
+
+        alert("حدث خطأ في الاتصال بـ Supabase");
+
+        console.error(error);
+    }
+}
+
+</script>
 
 function search() {
     let value = document.getElementById("searchInput").value.trim();
