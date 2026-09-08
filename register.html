@@ -15,65 +15,66 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f7fa;
+            background: #f4f6f8;
             color: #222;
         }
 
         header {
             background: #198754;
             color: white;
-            padding: 18px;
+            padding: 20px;
             text-align: center;
         }
 
         header h1 {
             margin: 0;
-            font-size: 26px;
+            font-size: 25px;
         }
 
         .container {
             max-width: 500px;
             margin: 40px auto;
-            padding: 25px;
+            padding: 15px;
         }
 
         .card {
             background: white;
-            padding: 30px;
+            padding: 30px 25px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         h2 {
             text-align: center;
-            margin-top: 0;
             color: #198754;
+            margin-top: 0;
+            margin-bottom: 25px;
         }
 
         label {
             display: block;
-            margin-top: 18px;
             margin-bottom: 7px;
+            margin-top: 18px;
             font-weight: bold;
         }
 
         input {
             width: 100%;
             padding: 13px;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 16px;
-            outline: none;
         }
 
         input:focus {
+            outline: none;
             border-color: #198754;
         }
 
         button {
             width: 100%;
-            margin-top: 25px;
             padding: 14px;
+            margin-top: 25px;
             background: #198754;
             color: white;
             border: none;
@@ -83,8 +84,28 @@
         }
 
         button:disabled {
-            background: #999;
-            cursor: not-allowed;
+            background: #888;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .success {
+            display: block;
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        .error {
+            display: block;
+            background: #f8d7da;
+            color: #842029;
         }
 
         .login {
@@ -95,33 +116,14 @@
         .login a,
         .home {
             color: #198754;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
         }
 
         .home {
             display: block;
             text-align: center;
-            margin-top: 25px;
-        }
-
-        #message {
-            display: none;
-            margin-top: 18px;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .success {
-            background: #d1e7dd;
-            color: #0f5132;
-        }
-
-        .error {
-            background: #f8d7da;
-            color: #842029;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -141,6 +143,7 @@
         <form id="registerForm">
 
             <label for="name">الاسم</label>
+
             <input
                 type="text"
                 id="name"
@@ -148,7 +151,9 @@
                 required
             >
 
+
             <label for="email">البريد الإلكتروني</label>
+
             <input
                 type="email"
                 id="email"
@@ -156,7 +161,9 @@
                 required
             >
 
+
             <label for="password">كلمة المرور</label>
+
             <input
                 type="password"
                 id="password"
@@ -165,7 +172,9 @@
                 required
             >
 
+
             <label for="confirmPassword">تأكيد كلمة المرور</label>
+
             <input
                 type="password"
                 id="confirmPassword"
@@ -174,18 +183,22 @@
                 required
             >
 
+
             <button type="submit" id="registerButton">
                 إنشاء الحساب
             </button>
 
         </form>
 
-        <div id="message"></div>
+
+        <div id="message" class="message"></div>
+
 
         <div class="login">
             لديك حساب بالفعل؟
             <a href="login.html">تسجيل الدخول</a>
         </div>
+
 
         <a class="home" href="index.html">
             ← العودة إلى الصفحة الرئيسية
@@ -196,191 +209,243 @@
 </div>
 
 
-<!-- Supabase -->
+<!-- مكتبة Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
-const SUPABASE_URL =
-    "https://sesbumfedusbjevbsyzl.supabase.co";
+    /* بيانات مشروع Supabase */
 
-const SUPABASE_KEY =
-    "sb_publishable_0sJrbh73jLip3050tJkc_A_9F6OPWqR";
+    const SUPABASE_URL =
+        "https://sesbumfedusbjevbsyzl.supabase.co";
 
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+    const SUPABASE_KEY =
+        "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
 
-const registerForm = document.getElementById("registerForm");
-const registerButton = document.getElementById("registerButton");
-const message = document.getElementById("message");
+    /* إنشاء اتصال Supabase */
 
-
-function showMessage(text, type) {
-
-    message.textContent = text;
-
-    message.className = type;
-
-    message.style.display = "block";
-}
-
-
-registerForm.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const email =
-        document.getElementById("email").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-
-    if (!name) {
-
-        showMessage("يرجى كتابة الاسم", "error");
-        return;
-
-    }
-
-
-    if (!email) {
-
-        showMessage("يرجى كتابة البريد الإلكتروني", "error");
-        return;
-
-    }
-
-
-    if (password.length < 6) {
-
-        showMessage(
-            "كلمة المرور يجب أن تكون 6 أحرف أو أكثر",
-            "error"
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
         );
 
-        return;
+
+    /* عناصر الصفحة */
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+    const registerButton =
+        document.getElementById("registerButton");
+
+    const message =
+        document.getElementById("message");
+
+
+    /* عرض الرسائل */
+
+    function showMessage(text, type) {
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
 
     }
 
 
-    if (password !== confirmPassword) {
+    /* التسجيل */
 
-        showMessage(
-            "كلمتا المرور غير متطابقتين",
-            "error"
-        );
+    registerForm.addEventListener(
+        "submit",
+        async function(event) {
 
-        return;
-
-    }
+            event.preventDefault();
 
 
-    registerButton.disabled = true;
+            const name =
+                document.getElementById("name")
+                .value
+                .trim();
 
-    registerButton.textContent = "جاري إنشاء الحساب...";
+
+            const email =
+                document.getElementById("email")
+                .value
+                .trim();
 
 
-    try {
+            const password =
+                document.getElementById("password")
+                .value;
 
-        const { data, error } =
-            await supabaseClient.auth.signUp({
 
-                email: email,
+            const confirmPassword =
+                document.getElementById("confirmPassword")
+                .value;
 
-                password: password,
 
-                options: {
+            /* التحقق من الاسم */
 
-                    data: {
-                        name: name
-                    }
+            if (name.length < 2) {
+
+                showMessage(
+                    "يرجى كتابة الاسم بشكل صحيح",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* التحقق من كلمة المرور */
+
+            if (password.length < 6) {
+
+                showMessage(
+                    "كلمة المرور يجب أن تكون 6 أحرف أو أكثر",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* التأكد من تطابق كلمات المرور */
+
+            if (password !== confirmPassword) {
+
+                showMessage(
+                    "كلمتا المرور غير متطابقتين",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            /* تعطيل الزر أثناء التسجيل */
+
+            registerButton.disabled = true;
+
+            registerButton.textContent =
+                "جاري إنشاء الحساب...";
+
+
+            try {
+
+                /* إرسال الحساب إلى Supabase */
+
+                const { data, error } =
+                    await supabaseClient.auth.signUp({
+
+                        email: email,
+
+                        password: password,
+
+                        options: {
+
+                            data: {
+                                name: name
+                            }
+
+                        }
+
+                    });
+
+
+                /* في حالة وجود خطأ */
+
+                if (error) {
+
+                    console.error(
+                        "Supabase Error:",
+                        error
+                    );
+
+                    showMessage(
+                        "لم يتم إنشاء الحساب: " +
+                        error.message,
+                        "error"
+                    );
+
+                    registerButton.disabled = false;
+
+                    registerButton.textContent =
+                        "إنشاء الحساب";
+
+                    return;
+                }
+
+
+                /* نجاح التسجيل */
+
+                console.log(
+                    "Account created:",
+                    data
+                );
+
+
+                if (data.user && !data.session) {
+
+                    showMessage(
+                        "تم إنشاء الحساب بنجاح 🎉" +
+                        " تحقق من بريدك الإلكتروني لتفعيل الحساب.",
+                        "success"
+                    );
+
+                } else {
+
+                    showMessage(
+                        "تم إنشاء الحساب بنجاح 🎉",
+                        "success"
+                    );
 
                 }
 
-            });
+
+                registerButton.textContent =
+                    "تم إنشاء الحساب ✓";
 
 
-        if (error) {
+                /* الانتقال لتسجيل الدخول بعد 4 ثوانٍ */
 
-            console.error(error);
+                setTimeout(function() {
 
-            showMessage(
-                "حدث خطأ: " + error.message,
-                "error"
-            );
+                    window.location.href =
+                        "login.html";
 
-            registerButton.disabled = false;
-
-            registerButton.textContent = "إنشاء الحساب";
-
-            return;
-        }
+                }, 4000);
 
 
-        console.log("Registration result:", data);
+            } catch (error) {
+
+                console.error(
+                    "Connection Error:",
+                    error
+                );
 
 
-        if (data.user && !data.session) {
+                showMessage(
+                    "حدث خطأ في الاتصال بـ Supabase. حاول مرة أخرى.",
+                    "error"
+                );
 
-            showMessage(
-                "تم إنشاء الحساب بنجاح 🎉 تحقق من بريدك الإلكتروني لتفعيل الحساب.",
-                "success"
-            );
 
-            registerButton.textContent = "تم إنشاء الحساب";
+                registerButton.disabled = false;
 
-            setTimeout(function() {
+                registerButton.textContent =
+                    "إنشاء الحساب";
 
-                window.location.href = "login.html";
-
-            }, 4000);
-
-        } else {
-
-            showMessage(
-                "تم إنشاء الحساب بنجاح 🎉",
-                "success"
-            );
-
-            registerButton.textContent = "تم إنشاء الحساب";
-
-            setTimeout(function() {
-
-                window.location.href = "login.html";
-
-            }, 2000);
+            }
 
         }
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showMessage(
-            "تعذر الاتصال بقاعدة البيانات. حاول مرة أخرى.",
-            "error"
-        );
-
-        registerButton.disabled = false;
-
-        registerButton.textContent = "إنشاء الحساب";
-
-    }
-
-});
+    );
 
 </script>
 
 </body>
-</html>
+    </html>
