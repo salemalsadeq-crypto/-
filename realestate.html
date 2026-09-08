@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>العقارات | فلسطين بلاتفورم</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:#f5f7fa;
+color:#172033;
+}
+
+header{
+background:white;
+padding:16px 20px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.header{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#173b68;
+}
+
+.logo span{color:#b51f2a}
+
+.back{
+text-decoration:none;
+background:#173b68;
+color:white;
+padding:9px 16px;
+border-radius:8px;
+}
+
+.hero{
+background:#173b68;
+color:white;
+text-align:center;
+padding:45px 20px;
+}
+
+.hero h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:35px 20px;
+}
+
+.search{
+background:white;
+padding:8px;
+border-radius:12px;
+display:flex;
+margin-bottom:30px;
+box-shadow:0 3px 15px rgba(0,0,0,.06);
+}
+
+.search input{
+flex:1;
+border:0;
+outline:0;
+padding:13px;
+font-size:16px;
+}
+
+.search button{
+border:0;
+background:#b51f2a;
+color:white;
+padding:0 20px;
+border-radius:8px;
+font-size:16px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 3px 15px rgba(0,0,0,.07);
+}
+
+.icon{
+font-size:45px;
+margin-bottom:10px;
+}
+
+.card h3{
+color:#173b68;
+margin-bottom:6px;
+}
+
+.card p{
+color:#718096;
+font-size:14px;
+}
+
+@media(max-width:700px){
+.cards{
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.hero h1{
+font-size:28px;
+}
+}
+
+@media(max-width:400px){
+.cards{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header">
+<div class="logo">فلسطين <span>بلاتفورم</span></div>
+<a href="index.html" class="back">← الرئيسية</a>
+</div>
+</header>
+
+<section class="hero">
+<h1>🏠 العقارات</h1>
+<p>بيع وإيجار العقارات في فلسطين</p>
+</section>
+
+<main class="container">
+
+<div class="search">
+<input type="text" placeholder="ابحث عن عقار أو مدينة...">
+<button>بحث</button>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🏠</div>
+<h3>بيوت للبيع</h3>
+<p>منازل وبيوت للبيع</p>
+</div>
+
+<div class="card">
+<div class="icon">🏢</div>
+<h3>شقق للبيع</h3>
+<p>شقق سكنية للبيع</p>
+</div>
+
+<div class="card">
+<div class="icon">🔑</div>
+<h3>شقق للإيجار</h3>
+<p>شقق ومنازل للإيجار</p>
+</div>
+
+<div class="card">
+<div class="icon">🏬</div>
+<h3>محلات تجارية</h3>
+<p>محلات ومكاتب تجارية</p>
+</div>
+
+<div class="card">
+<div class="icon">🌳</div>
+<h3>أراضي</h3>
+<p>أراضي للبيع والاستثمار</p>
+</div>
+
+<div class="card">
+<div class="icon">🏗️</div>
+<h3>عقارات أخرى</h3>
+<p>مختلف أنواع العقارات</p>
+</div>
+
+</div>
+
+</main>
+
+</body>
+</html>
