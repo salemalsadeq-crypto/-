@@ -225,12 +225,17 @@
 
 
     /* إنشاء اتصال Supabase */
+if (typeof supabase === "undefined") {
+    alert("مكتبة Supabase لم تعمل");
+} else {
+    alert("مكتبة Supabase تعمل");
+}
 
-    const supabaseClient =
-        supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
     /* عناصر الصفحة */
