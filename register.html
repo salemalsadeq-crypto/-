@@ -188,7 +188,7 @@
                 إنشاء الحساب
             </button>
 
-        <form onsubmit="createAccount(event)">
+        </form>
 
 
         <div id="message" class="message"></div>
@@ -218,24 +218,21 @@
     /* بيانات مشروع Supabase */
 
     const SUPABASE_URL =
-    "https://sesbumfedusbjevbsyzl.supabase.co";
+        "https://sesbumfedusbjevbsyzl.supabase.co";
 
-const SUPABASE_KEY =
-    "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
-    
+    const SUPABASE_KEY =
+        "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
+
     /* إنشاء اتصال Supabase */
 
-    if (typeof supabase === "undefined") {
-    alert("مكتبة Supabase لم تعمل");
-} else {
-    alert("مكتبة Supabase تعمل");
-}
+    const supabaseClient =
+        supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
-const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+
     /* عناصر الصفحة */
 
     const registerForm =
