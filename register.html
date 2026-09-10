@@ -1,235 +1,155 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إنشاء حساب - فلسطين بلاتفورم</title><style>
 
-    <title>إنشاء حساب - فلسطين بلاتفورم</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #222;
-        }
-
-        header {
-            background: #198754;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 25px;
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 15px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        h2 {
-            text-align: center;
-            color: #198754;
-            margin-top: 0;
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 7px;
-            margin-top: 18px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #198754;
-        }
-
-        button {
-            width: 100%;
-            padding: 14px;
-            margin-top: 25px;
-            background: #198754;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-
-        button:disabled {
-            background: #888;
-        }
-
-        .message {
-            display: none;
-            margin-top: 18px;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            line-height: 1.6;
-        }
-
-        .success {
-            display: block;
-            background: #d1e7dd;
-            color: #0f5132;
-        }
-
-        .error {
-            display: block;
-            background: #f8d7da;
-            color: #842029;
-        }
-
-        .login {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .login a,
-        .home {
-            color: #198754;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .home {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <h1>🇵🇸 فلسطين بلاتفورم</h1>
-</header>
-
-<div class="container">
-
-    <div class="card">
-
-        <h2>إنشاء حساب جديد</h2>
-
-        <form id="registerForm">
-
-            <label for="name">الاسم</label>
-
-            <input
-                type="text"
-                id="name"
-                placeholder="اكتب اسمك"
-                required
-            >
-
-
-            <label for="email">البريد الإلكتروني</label>
-
-            <input
-                type="email"
-                id="email"
-                placeholder="example@email.com"
-                required
-            >
-
-
-            <label for="password">كلمة المرور</label>
-
-            <input
-                type="password"
-                id="password"
-                placeholder="أدخل كلمة المرور"
-                minlength="6"
-                required
-            >
-
-
-            <label for="confirmPassword">تأكيد كلمة المرور</label>
-
-            <input
-                type="password"
-                id="confirmPassword"
-                placeholder="أعد كتابة كلمة المرور"
-                minlength="6"
-                required
-            >
-
-
-            <button type="submit" id="registerButton">
-                إنشاء الحساب
-            </button>
-
-        </form>
-
-
-        <div id="message" class="message"></div>
-
-
-        <div class="login">
-            لديك حساب بالفعل؟
-            <a href="login.html">تسجيل الدخول</a>
-        </div>
-
-
-        <a class="home" href="index.html">
-            ← العودة إلى الصفحة الرئيسية
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- مكتبة Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-<script>
-
-    /* بيانات مشروع Supabase */
-
-    const SUPABASE_URL =
-        "https://sesbumfedusbjevbsyzl.supabase.co";
-
-    const SUPABASE_KEY =
-        "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
-
-
-    /* إنشاء اتصال Supabase */
-if (typeof supabase === "undefined") {
-    alert("مكتبة Supabase لم تعمل");
-} else {
-    alert("مكتبة Supabase تعمل");
+* {
+    box-sizing: border-box;
 }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px #0002;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: .6;
+}
+
+.message {
+    margin-top: 15px;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #111;
+    text-decoration: none;
+}
+
+</style></head><body><div class="container"><h1>🇵🇸 إنشاء حساب</h1><p class="subtitle">
+انضم إلى فلسطين بلاتفورم
+</p><form id="registerForm"><label for="name">
+الاسم
+</label><input
+type="text"
+id="name"
+placeholder="اكتب اسمك"
+required
+
+«»
+
+<label for="email">
+البريد الإلكتروني
+</label><input
+type="email"
+id="email"
+placeholder="example@email.com"
+required
+
+«»
+
+<label for="password">
+كلمة المرور
+</label><input
+type="password"
+id="password"
+placeholder="6 أحرف على الأقل"
+required
+
+«»
+
+<label for="confirmPassword">
+تأكيد كلمة المرور
+</label><input
+type="password"
+id="confirmPassword"
+placeholder="أعد كتابة كلمة المرور"
+required
+
+«»
+
+<button
+type="submit"
+id="registerButton"
+
+«»
+
+إنشاء الحساب
+
+</button></form><div
+    id="message"
+    class="message"
+></div><a
+href="login.html"
+class="back"
+
+«»
+
+لديك حساب؟ تسجيل الدخول
+
+</a></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+
+const SUPABASE_URL =
+    "https://sesbumfedusbjevbsyzl.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
 const supabaseClient =
     supabase.createClient(
@@ -238,219 +158,154 @@ const supabaseClient =
     );
 
 
-    /* عناصر الصفحة */
+const form =
+    document.getElementById("registerForm");
 
-    const registerForm =
-        document.getElementById("registerForm");
+const button =
+    document.getElementById("registerButton");
 
-    const registerButton =
-        document.getElementById("registerButton");
-
-    const message =
-        document.getElementById("message");
+const message =
+    document.getElementById("message");
 
 
-    /* عرض الرسائل */
+form.addEventListener("submit", async function(event) {
 
-    function showMessage(text, type) {
+    event.preventDefault();
 
-        message.textContent = text;
+    const name =
+        document.getElementById("name")
+        .value
+        .trim();
 
-        message.className =
-            "message " + type;
+    const email =
+        document.getElementById("email")
+        .value
+        .trim();
 
+    const password =
+        document.getElementById("password")
+        .value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword")
+        .value;
+
+
+    message.textContent = "";
+    message.style.color = "#222";
+
+
+    if (password !== confirmPassword) {
+
+        message.textContent =
+            "❌ كلمتا المرور غير متطابقتين";
+
+        message.style.color = "red";
+
+        return;
     }
 
 
-    /* التسجيل */
+    if (password.length < 6) {
 
-    registerForm.addEventListener(
-        "submit",
-        async function(event) {
+        message.textContent =
+            "❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل";
 
-            event.preventDefault();
+        message.style.color = "red";
 
-
-            const name =
-                document.getElementById("name")
-                .value
-                .trim();
+        return;
+    }
 
 
-            const email =
-                document.getElementById("email")
-                .value
-                .trim();
+    button.disabled = true;
+
+    button.textContent =
+        "جاري إنشاء الحساب...";
 
 
-            const password =
-                document.getElementById("password")
-                .value;
+    try {
 
+        const {
+            data,
+            error
+        } = await supabaseClient.auth.signUp({
 
-            const confirmPassword =
-                document.getElementById("confirmPassword")
-                .value;
+            email: email,
 
+            password: password,
 
-            /* التحقق من الاسم */
+            options: {
 
-            if (name.length < 2) {
-
-                showMessage(
-                    "يرجى كتابة الاسم بشكل صحيح",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /* التحقق من كلمة المرور */
-
-            if (password.length < 6) {
-
-                showMessage(
-                    "كلمة المرور يجب أن تكون 6 أحرف أو أكثر",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /* التأكد من تطابق كلمات المرور */
-
-            if (password !== confirmPassword) {
-
-                showMessage(
-                    "كلمتا المرور غير متطابقتين",
-                    "error"
-                );
-
-                return;
-            }
-
-
-            /* تعطيل الزر أثناء التسجيل */
-
-            registerButton.disabled = true;
-
-            registerButton.textContent =
-                "جاري إنشاء الحساب...";
-
-
-            try {
-
-                /* إرسال الحساب إلى Supabase */
-
-                const { data, error } =
-                    await supabaseClient.auth.signUp({
-
-                        email: email,
-
-                        password: password,
-
-                        options: {
-
-                            data: {
-                                name: name
-                            }
-
-                        }
-
-                    });
-
-
-                /* في حالة وجود خطأ */
-
-                if (error) {
-
-                    console.error(
-                        "Supabase Error:",
-                        error
-                    );
-
-                    showMessage(
-                        "لم يتم إنشاء الحساب: " +
-                        error.message,
-                        "error"
-                    );
-
-                    registerButton.disabled = false;
-
-                    registerButton.textContent =
-                        "إنشاء الحساب";
-
-                    return;
+                data: {
+                    name: name
                 }
 
+            }
 
-                /* نجاح التسجيل */
-
-                console.log(
-                    "Account created:",
-                    data
-                );
+        });
 
 
-                if (data.user && !data.session) {
+        if (error) {
 
-                    showMessage(
-                        "تم إنشاء الحساب بنجاح 🎉" +
-                        " تحقق من بريدك الإلكتروني لتفعيل الحساب.",
-                        "success"
-                    );
+            console.error(error);
 
-                } else {
+            message.textContent =
+                "❌ " + error.message;
 
-                    showMessage(
-                        "تم إنشاء الحساب بنجاح 🎉",
-                        "success"
-                    );
+            message.style.color = "red";
 
-                }
+            return;
+        }
 
 
-                registerButton.textContent =
-                    "تم إنشاء الحساب ✓";
+        if (data.user) {
 
+            if (data.session) {
 
-                /* الانتقال لتسجيل الدخول بعد 4 ثوانٍ */
+                message.textContent =
+                    "✅ تم إنشاء الحساب بنجاح";
+
+                message.style.color =
+                    "green";
 
                 setTimeout(function() {
 
                     window.location.href =
-                        "login.html";
+                        "index.html";
 
-                }, 4000);
+                }, 1500);
 
+            } else {
 
-            } catch (error) {
+                message.textContent =
+                    "✅ تم إنشاء الحساب. تحقق من بريدك الإلكتروني لتفعيل الحساب ثم سجل الدخول.";
 
-                console.error(
-                    "Connection Error:",
-                    error
-                );
-
-
-                showMessage(
-                    "حدث خطأ في الاتصال بـ Supabase. حاول مرة أخرى.",
-                    "error"
-                );
-
-
-                registerButton.disabled = false;
-
-                registerButton.textContent =
-                    "إنشاء الحساب";
+                message.style.color =
+                    "green";
 
             }
 
         }
-    );
 
-</script>
+    } catch (error) {
 
-</body>
-    </html>
+        console.error(error);
+
+        message.textContent =
+            "❌ حدث خطأ في الاتصال. تأكد من اتصال الإنترنت.";
+
+        message.style.color =
+            "red";
+
+    } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+            "إنشاء الحساب";
+
+    }
+
+});
+
+</script></body></html>
