@@ -20,7 +20,28 @@ font-size: 14px;
     margin: 0;
     padding: 0;
 }
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+<script>
+const SUPABASE_URL = "https://dwegmvqiqedhkivoagoc.supabase.co";
+const SUPABASE_KEY = "sb_publishable_9Vq9rEmRYYkPdPV1N1FSHQ_BSRMDdj8";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+async function showUserName() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    if (user) {
+        const name = user.user_metadata?.name || user.email;
+        document.getElementById("userName").textContent = "مرحباً، " + name;
+    }
+}
+
+showUserName();
+</script>
 body {
     font-family: Arial, sans-serif;
     background: #f5f7fa;
