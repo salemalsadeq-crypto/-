@@ -224,13 +224,17 @@ const SUPABASE_KEY =
     "sb_publishable_9Vq9rEmRYYkPdPV1N1FSHQ_BSRMDdj8";
     /* إنشاء اتصال Supabase */
 
-    const supabaseClient =
-        supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+    if (typeof supabase === "undefined") {
+    alert("مكتبة Supabase لم تعمل");
+} else {
+    alert("مكتبة Supabase تعمل");
+}
 
-alert("Supabase يعمل");
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
     /* عناصر الصفحة */
 
     const registerForm =
