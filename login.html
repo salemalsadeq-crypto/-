@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +55,11 @@ input {
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 16px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #111;
 }
 
 button {
@@ -70,13 +76,14 @@ button {
 
 button:disabled {
     opacity: .6;
+    cursor: not-allowed;
 }
 
 .message {
     margin-top: 15px;
     text-align: center;
-    color: red;
     line-height: 1.7;
+    min-height: 30px;
 }
 
 .links {
@@ -88,172 +95,305 @@ button:disabled {
     color: #111;
     text-decoration: none;
 }
+
+.links a:hover {
+    text-decoration: underline;
+}
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🇵🇸 تسجيل الدخول</h1>
+    <h1>🇵🇸 تسجيل الدخول</h1>
 
-<p class="subtitle">
-مرحبًا بك في فلسطين بلاتفورم
-</p>
+    <p class="subtitle">
+        مرحبًا بك في فلسطين بلاتفورم
+    </p>
 
-<form id="loginForm">
+    <form id="loginForm">
 
-<label for="email">
-البريد الإلكتروني
-</label>
+        <label for="email">
+            البريد الإلكتروني
+        </label>
 
-<input
-    type="email"
-    id="email"
-    placeholder="example@email.com"
-    required
->
+        <input
+            type="email"
+            id="email"
+            placeholder="example@email.com"
+            autocomplete="email"
+            required
+        >
 
-<label for="password">
-كلمة المرور
-</label>
+        <label for="password">
+            كلمة المرور
+        </label>
 
-<input
-    type="password"
-    id="password"
-    placeholder="كلمة المرور"
-    required
->
+        <input
+            type="password"
+            id="password"
+            placeholder="كلمة المرور"
+            autocomplete="current-password"
+            required
+        >
 
-<button
-    type="submit"
-    id="loginButton"
->
-تسجيل الدخول
-</button>
+        <button
+            type="submit"
+            id="loginButton"
+        >
+            تسجيل الدخول
+        </button>
 
-</form>
+    </form>
 
-<div id="message" class="message"></div>
+    <div id="message" class="message"></div>
 
-<div class="links">
+    <div class="links">
 
-<a href="register.html">
-ليس لديك حساب؟ إنشاء حساب
-</a>
+        <a href="register.html">
+            ليس لديك حساب؟ إنشاء حساب
+        </a>
 
-<br><br>
+        <br><br>
 
-<a href="index.html">
-العودة إلى الرئيسية
-</a>
+        <a href="index.html">
+            العودة إلى الرئيسية
+        </a>
+
+    </div>
 
 </div>
 
-</div>
 
+<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
-"https://sesbumfedusbjevbsyzl.supabase.co";
- 
+    "https://sesbumfedusbjevbsyzl.supabase.co";
 
 const SUPABASE_KEY =
-"sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+    "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
 
 const supabaseClient =
-supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
 
 const form =
-document.getElementById("loginForm");
+    document.getElementById("loginForm");
 
 const button =
-document.getElementById("loginButton");
+    document.getElementById("loginButton");
 
 const message =
-document.getElementById("message");
+    document.getElementById("message");
 
-form.addEventListener("submit", async function(event) {
+const emailInput =
+    document.getElementById("email");
 
-    event.preventDefault();
+const passwordInput =
+    document.getElementById("password");
 
-    const email =
-    document.getElementById("email").value.trim();
 
-    const password =
-    document.getElementById("password").value;
+// إظهار الرسالة
+function showMessage(text, color) {
 
-    message.textContent = "";
+    message.textContent = text;
+    message.style.color = color;
 
-    button.disabled = true;
+}
 
-    button.textContent =
-    "جاري تسجيل الدخول...";
+
+// التحقق من وجود جلسة سابقة
+async function checkSession() {
 
     try {
 
         const { data, error } =
-        await supabaseClient.auth.signInWithPassword({
-
-            email: email,
-            password: password
-
-        });
+            await supabaseClient.auth.getSession();
 
         if (error) {
 
-            console.error(error);
-
-            message.style.color = "red";
-
-            message.textContent =
-            "❌ " + error.message;
+            console.error(
+                "Session error:",
+                error
+            );
 
             return;
         }
 
         if (data.session) {
 
-            message.style.color = "green";
-
-            message.textContent =
-            "✅ تم تسجيل الدخول بنجاح";
-
-            setTimeout(function() {
-
-            window.location.replace("./index.html");
-                
-
-            }, 1000);
+            window.location.replace(
+                "./index.html"
+            );
 
         }
 
     } catch (error) {
 
-        console.error(error);
-
-        message.style.color = "red";
-
-        message.textContent =
-        "❌ حدث خطأ في الاتصال بـ Supabase";
-
-    } finally {
-
-        button.disabled = false;
-
-        button.textContent =
-        "تسجيل الدخول";
+        console.error(
+            "Session check error:",
+            error
+        );
 
     }
 
-});
+}
+
+
+// تسجيل الدخول
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+        showMessage("", "red");
+
+        button.disabled = true;
+
+        button.textContent =
+            "جاري تسجيل الدخول...";
+
+
+        try {
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+
+                    email: email,
+
+                    password: password
+
+                });
+
+
+            if (error) {
+
+                console.error(
+                    "Supabase login error:",
+                    error
+                );
+
+
+                if (
+                    error.message
+                    .toLowerCase()
+                    .includes("invalid login credentials")
+                ) {
+
+                    showMessage(
+                        "❌ البريد الإلكتروني أو كلمة المرور غير صحيحة",
+                        "red"
+                    );
+
+                }
+
+                else if (
+                    error.message
+                    .toLowerCase()
+                    .includes("email not confirmed")
+                ) {
+
+                    showMessage(
+                        "❌ يجب تأكيد البريد الإلكتروني أولًا",
+                        "red"
+                    );
+
+                }
+
+                else {
+
+                    showMessage(
+                        "❌ " + error.message,
+                        "red"
+                    );
+
+                }
+
+                return;
+            }
+
+
+            if (data && data.session) {
+
+                showMessage(
+                    "✅ تم تسجيل الدخول بنجاح",
+                    "green"
+                );
+
+
+                // إعطاء وقت بسيط لظهور الرسالة
+                setTimeout(
+                    function() {
+
+                        window.location.replace(
+                            "./index.html"
+                        );
+
+                    },
+                    700
+                );
+
+            }
+
+            else {
+
+                showMessage(
+                    "❌ تم تسجيل الدخول ولكن لم يتم إنشاء جلسة",
+                    "red"
+                );
+
+            }
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Unexpected error:",
+                error
+            );
+
+            showMessage(
+                "❌ حدث خطأ أثناء الاتصال بـ Supabase",
+                "red"
+            );
+
+        }
+
+        finally {
+
+            button.disabled = false;
+
+            button.textContent =
+                "تسجيل الدخول";
+
+        }
+
+    }
+);
+
+
+// تشغيل فحص الجلسة
+checkSession();
 
 </script>
 
 </body>
-</html>
+    </html>
