@@ -24,20 +24,6 @@ body {
     color: #222;
 }
 
-/* اسم المستخدم */
-
-#userName {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 9999;
-    background: white;
-    padding: 8px 14px;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    font-size: 14px;
-}
-
 /* الهيدر */
 
 header {
@@ -49,7 +35,7 @@ header {
     box-shadow: 0 2px 10px #0001;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .logo {
@@ -57,12 +43,33 @@ header {
     font-weight: bold;
 }
 
+/* منطقة الحساب */
+
+.account-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-name {
+    background: #f5f5f5;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: none;
+}
+
+/* زر تسجيل الدخول والخروج */
+
 .login {
     background: #111;
     color: white;
     padding: 10px 18px;
     border-radius: 8px;
     text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
 }
 
 /* الصفحة الرئيسية */
@@ -202,9 +209,25 @@ footer {
 
 @media (max-width: 600px) {
 
-    #userName {
-        top: 10px;
-        left: 10px;
+    header {
+        padding: 13px 4%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .account-area {
+        gap: 5px;
+    }
+
+    .user-name {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .login {
+        padding: 9px 12px;
         font-size: 13px;
     }
 
@@ -233,12 +256,9 @@ footer {
 <body>
 
 
-<!-- اسم المستخدم -->
-
-<div id="userName"></div>
-
-
-<!-- الهيدر -->
+<!-- =========================
+     الهيدر
+========================= -->
 
 <header>
 
@@ -246,16 +266,33 @@ footer {
         🇵🇸 فلسطين بلاتفورم
     </div>
 
-    <a href="login.html"
-       class="login"
-       id="loginLink">
-        تسجيل الدخول
-    </a>
+
+    <div class="account-area">
+
+        <!-- اسم المستخدم -->
+        <div id="userName"
+             class="user-name">
+        </div>
+
+
+        <!-- زر الحساب -->
+        <a href="login.html"
+           class="login"
+           id="loginLink">
+
+            تسجيل الدخول
+
+        </a>
+
+    </div>
 
 </header>
 
 
-<!-- الصفحة الرئيسية -->
+
+<!-- =========================
+     الصفحة الرئيسية
+========================= -->
 
 <section class="hero">
 
@@ -266,6 +303,7 @@ footer {
     <p>
         محلات، عقارات، سيارات، وظائف، خدمات وإعلانات
     </p>
+
 
     <div class="search">
 
@@ -284,7 +322,10 @@ footer {
 </section>
 
 
-<!-- التصنيفات -->
+
+<!-- =========================
+     التصنيفات
+========================= -->
 
 <section>
 
@@ -292,12 +333,16 @@ footer {
         استكشف المنصة
     </h2>
 
+
     <div class="categories">
+
 
         <div class="card"
              onclick="location.href='shops.html'">
 
-            <div class="icon">🛍️</div>
+            <div class="icon">
+                🛍️
+            </div>
 
             <h3>
                 المحلات والمتاجر
@@ -310,10 +355,13 @@ footer {
         </div>
 
 
+
         <div class="card"
              onclick="location.href='realestate.html'">
 
-            <div class="icon">🏠</div>
+            <div class="icon">
+                🏠
+            </div>
 
             <h3>
                 العقارات
@@ -326,10 +374,13 @@ footer {
         </div>
 
 
+
         <div class="card"
              onclick="location.href='cars.html'">
 
-            <div class="icon">🚗</div>
+            <div class="icon">
+                🚗
+            </div>
 
             <h3>
                 السيارات
@@ -342,10 +393,13 @@ footer {
         </div>
 
 
+
         <div class="card"
              onclick="location.href='jobs.html'">
 
-            <div class="icon">💼</div>
+            <div class="icon">
+                💼
+            </div>
 
             <h3>
                 الوظائف
@@ -358,10 +412,13 @@ footer {
         </div>
 
 
+
         <div class="card"
              onclick="location.href='services.html'">
 
-            <div class="icon">🔧</div>
+            <div class="icon">
+                🔧
+            </div>
 
             <h3>
                 الخدمات والحرفيين
@@ -374,10 +431,13 @@ footer {
         </div>
 
 
+
         <div class="card"
              onclick="location.href='ads.html'">
 
-            <div class="icon">📢</div>
+            <div class="icon">
+                📢
+            </div>
 
             <h3>
                 الإعلانات
@@ -389,18 +449,23 @@ footer {
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- عن المنصة -->
+
+<!-- =========================
+     عن المنصة
+========================= -->
 
 <section class="about">
 
     <h2 class="section-title">
         عن فلسطين بلاتفورم
     </h2>
+
 
     <p>
 
@@ -416,12 +481,17 @@ footer {
 
         <a href="ads.html"
            class="btn">
+
             📢 أضف إعلانك
+
         </a>
+
 
         <a href="register.html"
            class="btn secondary">
+
             إنشاء حساب
+
         </a>
 
     </div>
@@ -429,7 +499,10 @@ footer {
 </section>
 
 
-<!-- الفوتر -->
+
+<!-- =========================
+     الفوتر
+========================= -->
 
 <footer>
 
@@ -437,8 +510,14 @@ footer {
 
 </footer>
 
-<!-- Supabase -->
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
@@ -448,6 +527,8 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
+
+/* إنشاء اتصال Supabase */
 
 const supabaseClient = supabase.createClient(
     SUPABASE_URL,
@@ -462,6 +543,9 @@ const supabaseClient = supabase.createClient(
 );
 
 
+
+/* عناصر الصفحة */
+
 const userName =
     document.getElementById("userName");
 
@@ -469,21 +553,133 @@ const loginLink =
     document.getElementById("loginLink");
 
 
+
+/* ==================================
+   تحديث واجهة الحساب
+================================== */
+
+function updateAccountUI(user) {
+
+    if (user) {
+
+        console.log(
+            "المستخدم مسجل الدخول:",
+            user.email
+        );
+
+
+        /* الحصول على الاسم */
+
+        const name =
+            user.user_metadata?.name ||
+            user.user_metadata?.full_name ||
+            user.email ||
+            "المستخدم";
+
+
+        /* عرض اسم المستخدم */
+
+        userName.textContent =
+            "مرحباً، " + name;
+
+        userName.style.display =
+            "block";
+
+
+        /* تحويل الزر إلى تسجيل الخروج */
+
+        loginLink.textContent =
+            "تسجيل الخروج";
+
+        loginLink.href =
+            "#";
+
+
+        loginLink.onclick =
+            async function(event) {
+
+                event.preventDefault();
+
+
+                loginLink.textContent =
+                    "جاري تسجيل الخروج...";
+
+
+                const {
+                    error
+                } =
+                await supabaseClient.auth.signOut();
+
+
+                if (error) {
+
+                    console.error(
+                        "خطأ تسجيل الخروج:",
+                        error
+                    );
+
+                    loginLink.textContent =
+                        "تسجيل الخروج";
+
+                    return;
+                }
+
+
+                /* بعد تسجيل الخروج */
+
+                updateAccountUI(null);
+
+
+                window.location.href =
+                    "login.html";
+
+            };
+
+
+    } else {
+
+        console.log(
+            "لا يوجد مستخدم مسجل"
+        );
+
+
+        /* إخفاء الاسم */
+
+        userName.textContent = "";
+
+        userName.style.display =
+            "none";
+
+
+        /* إعادة زر تسجيل الدخول */
+
+        loginLink.textContent =
+            "تسجيل الدخول";
+
+        loginLink.href =
+            "login.html";
+
+        loginLink.onclick = null;
+
+    }
+
+}
+
+
+
+/* ==================================
+   فحص المستخدم الحالي
+================================== */
+
 async function checkUser() {
-
-    console.log("بدأ فحص المستخدم...");
-
 
     try {
 
         const {
             data,
             error
-        } = await supabaseClient.auth.getUser();
-
-
-        console.log("USER:", data);
-        console.log("ERROR:", error);
+        } =
+        await supabaseClient.auth.getUser();
 
 
         if (error) {
@@ -493,82 +689,15 @@ async function checkUser() {
                 error
             );
 
+            updateAccountUI(null);
+
             return;
         }
 
 
-        const user = data.user;
-
-
-        if (user) {
-
-            console.log(
-                "المستخدم مسجل:",
-                user.email
-            );
-
-
-            const name =
-                user.user_metadata?.name ||
-                user.user_metadata?.full_name ||
-                user.email ||
-                "المستخدم";
-
-
-            userName.textContent =
-                "مرحباً، " + name;
-
-
-            loginLink.textContent =
-                "تسجيل الخروج";
-
-
-            loginLink.href =
-                "#";
-
-
-            loginLink.onclick =
-                async function(event) {
-
-                    event.preventDefault();
-
-
-                    const {
-                        error
-                    } =
-                    await supabaseClient.auth.signOut();
-
-
-                    if (error) {
-
-                        console.error(error);
-
-                        return;
-                    }
-
-
-                    window.location.href =
-                        "login.html";
-
-                };
-
-
-        } else {
-
-            console.log(
-                "لا يوجد مستخدم مسجل"
-            );
-
-
-            userName.textContent = "";
-
-            loginLink.textContent =
-                "تسجيل الدخول";
-
-            loginLink.href =
-                "login.html";
-
-        }
+        updateAccountUI(
+            data.user
+        );
 
 
     } catch (error) {
@@ -578,14 +707,17 @@ async function checkUser() {
             error
         );
 
+        updateAccountUI(null);
+
     }
 
 }
 
 
-/*
- * مراقبة تسجيل الدخول والخروج
- */
+
+/* ==================================
+   مراقبة حالة تسجيل الدخول
+================================== */
 
 supabaseClient.auth.onAuthStateChange(
     function(event, session) {
@@ -595,28 +727,18 @@ supabaseClient.auth.onAuthStateChange(
             event
         );
 
-        if (session) {
 
-            const user =
-                session.user;
+        if (session && session.user) {
 
-            const name =
-                user.user_metadata?.name ||
-                user.user_metadata?.full_name ||
-                user.email ||
-                "المستخدم";
+            updateAccountUI(
+                session.user
+            );
 
+        } else {
 
-            userName.textContent =
-                "مرحباً، " + name;
-
-
-            loginLink.textContent =
-                "تسجيل الخروج";
-
-
-            loginLink.href =
-                "#";
+            updateAccountUI(
+                null
+            );
 
         }
 
@@ -624,16 +746,18 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-/*
- * فحص المستخدم عند فتح الصفحة
- */
+
+/* ==================================
+   تشغيل فحص المستخدم
+================================== */
 
 checkUser();
 
 
-/*
- * البحث
- */
+
+/* ==================================
+   البحث
+================================== */
 
 function search() {
 
@@ -662,6 +786,7 @@ function search() {
 
 </script>
 
+
 </body>
 
-</html>
+      </html>
