@@ -167,231 +167,186 @@ button:disabled {
 </div>
 
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
 const SUPABASE_URL =
-    "https://sesbumfedusbjevbsyzl.supabase.co";
+"https://sesbumfedusbjevbsyzl.supabase.co";
 
 const SUPABASE_KEY =
-    "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+"sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
 
-const supabaseClient =
-    supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        }
+    }
+);
 
 
-const form =
-    document.getElementById("loginForm");
-
-const button =
-    document.getElementById("loginButton");
-
-const message =
-    document.getElementById("message");
-
-const emailInput =
-    document.getElementById("email");
-
-const passwordInput =
-    document.getElementById("password");
+const form = document.getElementById("loginForm");
+const button = document.getElementById("loginButton");
+const message = document.getElementById("message");
 
 
-// إظهار الرسالة
-function showMessage(text, color) {
+form.addEventListener("submit", async function(event) {
 
-    message.textContent = text;
-    message.style.color = color;
+    event.preventDefault();
 
-}
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
 
 
-// التحقق من وجود جلسة سابقة
-async function checkSession() {
+    message.textContent = "";
+
+    button.disabled = true;
+
+    button.textContent =
+        "جاري تسجيل الدخول...";
+
 
     try {
 
         const { data, error } =
-            await supabaseClient.auth.getSession();
+            await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
 
         if (error) {
 
-            console.error(
-                "Session error:",
-                error
-            );
+            console.error(error);
 
-            return;
-        }
+            message.style.color = "red";
 
-        if (data.session) {
+            if (
+                error.message
+                .toLowerCase()
+                .includes("invalid login credentials")
+            ) {
 
-            window.location.replace(
-                "./index.html"
-            );
+                message.textContent =
+                    "❌ البريد الإلكتروني أو كلمة المرور غير صحيحة";
 
-        }
+            } else if (
+                error.message
+                .toLowerCase()
+                .includes("email not confirmed")
+            ) {
 
-    } catch (error) {
+                message.textContent =
+                    "❌ يجب تأكيد البريد الإلكتروني أولاً";
 
-        console.error(
-            "Session check error:",
-            error
-        );
+            } else {
 
-    }
-
-}
-
-
-// تسجيل الدخول
-form.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-        const email =
-            emailInput.value.trim();
-
-        const password =
-            passwordInput.value;
-
-        showMessage("", "red");
-
-        button.disabled = true;
-
-        button.textContent =
-            "جاري تسجيل الدخول...";
-
-
-        try {
-
-            const { data, error } =
-                await supabaseClient.auth.signInWithPassword({
-
-                    email: email,
-
-                    password: password
-
-                });
-
-
-            if (error) {
-
-                console.error(
-                    "Supabase login error:",
-                    error
-                );
-
-
-                if (
-                    error.message
-                    .toLowerCase()
-                    .includes("invalid login credentials")
-                ) {
-
-                    showMessage(
-                        "❌ البريد الإلكتروني أو كلمة المرور غير صحيحة",
-                        "red"
-                    );
-
-                }
-
-                else if (
-                    error.message
-                    .toLowerCase()
-                    .includes("email not confirmed")
-                ) {
-
-                    showMessage(
-                        "❌ يجب تأكيد البريد الإلكتروني أولًا",
-                        "red"
-                    );
-
-                }
-
-                else {
-
-                    showMessage(
-                        "❌ " + error.message,
-                        "red"
-                    );
-
-                }
-
-                return;
-            }
-
-
-            if (data && data.session) {
-
-                showMessage(
-                    "✅ تم تسجيل الدخول بنجاح",
-                    "green"
-                );
-
-
-                // إعطاء وقت بسيط لظهور الرسالة
-                setTimeout(
-                    function() {
-
-                        window.location.replace(
-                            "./index.html"
-                        );
-
-                    },
-                    700
-                );
+                message.textContent =
+                    "❌ " + error.message;
 
             }
-
-            else {
-
-                showMessage(
-                    "❌ تم تسجيل الدخول ولكن لم يتم إنشاء جلسة",
-                    "red"
-                );
-
-            }
-
-
-        }
-
-        catch (error) {
-
-            console.error(
-                "Unexpected error:",
-                error
-            );
-
-            showMessage(
-                "❌ حدث خطأ أثناء الاتصال بـ Supabase",
-                "red"
-            );
-
-        }
-
-        finally {
 
             button.disabled = false;
 
             button.textContent =
                 "تسجيل الدخول";
 
+            return;
         }
 
+
+        if (!data || !data.session) {
+
+            message.style.color = "red";
+
+            message.textContent =
+                "❌ تم الدخول ولكن لم يتم حفظ الجلسة";
+
+            button.disabled = false;
+
+            button.textContent =
+                "تسجيل الدخول";
+
+            return;
+        }
+
+
+        console.log(
+            "تم تسجيل الدخول:",
+            data.user
+        );
+
+        console.log(
+            "الجلسة:",
+            data.session
+        );
+
+
+        message.style.color = "green";
+
+        message.textContent =
+            "✅ تم تسجيل الدخول بنجاح";
+
+
+        /*
+         * التأكد أن الجلسة محفوظة
+         * قبل الانتقال إلى الصفحة الرئيسية
+         */
+
+        const { data: sessionData } =
+            await supabaseClient.auth.getSession();
+
+
+        if (!sessionData.session) {
+
+            message.style.color = "red";
+
+            message.textContent =
+                "❌ تعذر حفظ جلسة تسجيل الدخول";
+
+            button.disabled = false;
+
+            button.textContent =
+                "تسجيل الدخول";
+
+            return;
+        }
+
+
+        setTimeout(function() {
+
+            window.location.href =
+                "index.html";
+
+        }, 500);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        message.style.color = "red";
+
+        message.textContent =
+            "❌ حدث خطأ أثناء تسجيل الدخول";
+
+        button.disabled = false;
+
+        button.textContent =
+            "تسجيل الدخول";
+
     }
-);
 
-
-// تشغيل فحص الجلسة
-checkSession();
+});
 
 </script>
 
