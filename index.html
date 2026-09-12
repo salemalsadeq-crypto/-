@@ -1,52 +1,44 @@
-<div id="userName" style="
-position: fixed;
-top: 15px;
-left: 15px;
-z-index: 9999;
-background: white;
-padding: 8px 14px;
-border-radius: 20px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-font-size: 14px;
-">
-</div>
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>فلسطين بلاتفورم</title><style>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>فلسطين بلاتفورم</title>
+
+<style>
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-const SUPABASE_URL = "https://sesbumfedusbjevbsyzl.supabase.co";
-const SUPABASE_KEY = "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
-
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-async function showUserName() {
-    const { data: { user } } = await supabaseClient.auth.getUser();
-
-    if (user) {
-        const name = user.user_metadata?.name || user.email;
-        document.getElementById("userName").textContent = "مرحباً، " + name;
-    }
-}
-
-showUserName();
-</script>
 body {
     font-family: Arial, sans-serif;
     background: #f5f7fa;
     color: #222;
 }
+
+/* اسم المستخدم */
+
+#userName {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 9999;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-size: 14px;
+}
+
+/* الهيدر */
 
 header {
     background: #fff;
@@ -73,6 +65,8 @@ header {
     text-decoration: none;
 }
 
+/* الصفحة الرئيسية */
+
 .hero {
     text-align: center;
     padding: 60px 20px;
@@ -89,6 +83,8 @@ header {
     color: #666;
     margin-bottom: 25px;
 }
+
+/* البحث */
 
 .search {
     display: flex;
@@ -113,6 +109,8 @@ header {
     cursor: pointer;
 }
 
+/* الأقسام */
+
 section {
     padding: 45px 6%;
 }
@@ -125,7 +123,8 @@ section {
 
 .categories {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
@@ -155,6 +154,8 @@ section {
 .card p {
     color: #777;
 }
+
+/* عن المنصة */
 
 .about {
     background: white;
@@ -187,6 +188,8 @@ section {
     color: #111;
 }
 
+/* الفوتر */
+
 footer {
     background: #111;
     color: white;
@@ -195,7 +198,16 @@ footer {
     margin-top: 30px;
 }
 
+/* الهاتف */
+
 @media (max-width: 600px) {
+
+    #userName {
+        top: 10px;
+        left: 10px;
+        font-size: 13px;
+    }
+
     .hero h1 {
         font-size: 27px;
     }
@@ -210,115 +222,444 @@ footer {
         width: 100%;
         margin: 3px 0;
     }
+
 }
-</style></head><body><header>
-    <div class="logo">🇵🇸 فلسطين بلاتفورم</div><a href="login.html" class="login">
-    تسجيل الدخول
-</a>
 
-</header><section class="hero"><h1>🇵🇸 كل فلسطين في مكان واحد</h1>
+</style>
 
-<p>
-    محلات، عقارات، سيارات، وظائف، خدمات وإعلانات
-</p>
+</head>
 
-<div class="search">
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="ماذا تبحث في فلسطين؟"
-    >
+<body>
 
-    <button onclick="search()">
-        بحث
-    </button>
 
-</div>
+<!-- اسم المستخدم -->
 
-</section><section><h2 class="section-title">
-    استكشف المنصة
-</h2>
+<div id="userName"></div>
 
-<div class="categories">
 
-    <div class="card" onclick="location.href='shops.html'">
-        <div class="icon">🛍️</div>
-        <h3>المحلات والمتاجر</h3>
-        <p>اكتشف المحلات والمتاجر</p>
+<!-- الهيدر -->
+
+<header>
+
+    <div class="logo">
+        🇵🇸 فلسطين بلاتفورم
     </div>
 
-    <div class="card" onclick="location.href='realestate.html'">
-        <div class="icon">🏠</div>
-        <h3>العقارات</h3>
-        <p>بيع وشراء وإيجار العقارات</p>
-    </div>
-
-    <div class="card" onclick="location.href='cars.html'">
-        <div class="icon">🚗</div>
-        <h3>السيارات</h3>
-        <p>سيارات للبيع والشراء</p>
-    </div>
-
-    <div class="card" onclick="location.href='jobs.html'">
-        <div class="icon">💼</div>
-        <h3>الوظائف</h3>
-        <p>وظائف وفرص عمل</p>
-    </div>
-
-    <div class="card" onclick="location.href='services.html'">
-        <div class="icon">🔧</div>
-        <h3>الخدمات والحرفيين</h3>
-        <p>اعثر على مقدم الخدمة المناسب</p>
-    </div>
-
-    <div class="card" onclick="location.href='ads.html'">
-        <div class="icon">📢</div>
-        <h3>الإعلانات</h3>
-        <p>إعلانات متنوعة من جميع أنحاء فلسطين</p>
-    </div>
-
-</div>
-
-</section><section class="about"><h2 class="section-title">
-    عن فلسطين بلاتفورم
-</h2>
-
-<p>
-    منصة فلسطينية شاملة تهدف إلى جمع المحلات والمتاجر
-    والعقارات والسيارات والوظائف والخدمات والإعلانات
-    في مكان واحد، لتسهيل الوصول إلى الخدمات والفرص
-    داخل جميع محافظات فلسطين.
-</p>
-
-<div class="buttons">
-
-    <a href="ads.html" class="btn">
-        📢 أضف إعلانك
+    <a href="login.html"
+       class="login"
+       id="loginLink">
+        تسجيل الدخول
     </a>
 
-    <a href="register.html" class="btn secondary">
-        إنشاء حساب
-    </a>
+</header>
 
-</div>
 
-</section><footer>
+<!-- الصفحة الرئيسية -->
+
+<section class="hero">
+
+    <h1>
+        🇵🇸 كل فلسطين في مكان واحد
+    </h1>
+
+    <p>
+        محلات، عقارات، سيارات، وظائف، خدمات وإعلانات
+    </p>
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ماذا تبحث في فلسطين؟"
+        >
+
+        <button onclick="search()">
+            بحث
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- التصنيفات -->
+
+<section>
+
+    <h2 class="section-title">
+        استكشف المنصة
+    </h2>
+
+    <div class="categories">
+
+        <div class="card"
+             onclick="location.href='shops.html'">
+
+            <div class="icon">🛍️</div>
+
+            <h3>
+                المحلات والمتاجر
+            </h3>
+
+            <p>
+                اكتشف المحلات والمتاجر
+            </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="location.href='realestate.html'">
+
+            <div class="icon">🏠</div>
+
+            <h3>
+                العقارات
+            </h3>
+
+            <p>
+                بيع وشراء وإيجار العقارات
+            </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="location.href='cars.html'">
+
+            <div class="icon">🚗</div>
+
+            <h3>
+                السيارات
+            </h3>
+
+            <p>
+                سيارات للبيع والشراء
+            </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="location.href='jobs.html'">
+
+            <div class="icon">💼</div>
+
+            <h3>
+                الوظائف
+            </h3>
+
+            <p>
+                وظائف وفرص عمل
+            </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="location.href='services.html'">
+
+            <div class="icon">🔧</div>
+
+            <h3>
+                الخدمات والحرفيين
+            </h3>
+
+            <p>
+                اعثر على مقدم الخدمة المناسب
+            </p>
+
+        </div>
+
+
+        <div class="card"
+             onclick="location.href='ads.html'">
+
+            <div class="icon">📢</div>
+
+            <h3>
+                الإعلانات
+            </h3>
+
+            <p>
+                إعلانات متنوعة من جميع أنحاء فلسطين
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- عن المنصة -->
+
+<section class="about">
+
+    <h2 class="section-title">
+        عن فلسطين بلاتفورم
+    </h2>
+
+    <p>
+
+        منصة فلسطينية شاملة تهدف إلى جمع المحلات والمتاجر
+        والعقارات والسيارات والوظائف والخدمات والإعلانات
+        في مكان واحد، لتسهيل الوصول إلى الخدمات والفرص
+        داخل جميع محافظات فلسطين.
+
+    </p>
+
+
+    <div class="buttons">
+
+        <a href="ads.html"
+           class="btn">
+            📢 أضف إعلانك
+        </a>
+
+        <a href="register.html"
+           class="btn secondary">
+            إنشاء حساب
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- الفوتر -->
+
+<footer>
+
     © 2026 فلسطين بلاتفورم - جميع الحقوق محفوظة
-</footer><script>
+
+</footer>
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* إعداد Supabase */
+
+const SUPABASE_URL =
+    "https://sesbumfedusbjevbsyzl.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
+
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* عناصر الصفحة */
+
+const userName =
+    document.getElementById("userName");
+
+const loginLink =
+    document.getElementById("loginLink");
+
+
+/* إظهار المستخدم */
+
+async function showUser() {
+
+    try {
+
+        const {
+            data,
+            error
+        } =
+        await supabaseClient.auth.getUser();
+
+
+        if (error) {
+
+            console.error(
+                "Supabase user error:",
+                error
+            );
+
+            return;
+        }
+
+
+        const user = data.user;
+
+
+        if (user) {
+
+            /* الحصول على الاسم */
+
+            const name =
+                user.user_metadata?.name
+                ||
+                user.user_metadata?.full_name
+                ||
+                user.email
+                ||
+                "المستخدم";
+
+
+            /* إظهار الاسم */
+
+            userName.textContent =
+                "مرحباً، " + name;
+
+
+            /* تغيير زر تسجيل الدخول */
+
+            loginLink.textContent =
+                "تسجيل الخروج";
+
+
+            loginLink.href =
+                "#";
+
+
+            loginLink.onclick =
+                async function(event) {
+
+                    event.preventDefault();
+
+                    await logout();
+
+                };
+
+        }
+
+        else {
+
+            /* لا يوجد مستخدم */
+
+            userName.textContent = "";
+
+            loginLink.textContent =
+                "تسجيل الدخول";
+
+            loginLink.href =
+                "login.html";
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Unexpected error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* تسجيل الخروج */
+
+async function logout() {
+
+    try {
+
+        const { error } =
+            await supabaseClient.auth.signOut();
+
+
+        if (error) {
+
+            console.error(
+                "Logout error:",
+                error
+            );
+
+            alert(
+                "حدث خطأ أثناء تسجيل الخروج"
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            "login.html";
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+            "حدث خطأ أثناء تسجيل الخروج"
+        );
+
+    }
+
+}
+
+
+/* مراقبة حالة تسجيل الدخول */
+
+supabaseClient.auth.onAuthStateChange(
+    function(event, session) {
+
+        console.log(
+            "Auth event:",
+            event
+        );
+
+        showUser();
+
+    }
+);
+
+
+/* تشغيل فحص المستخدم */
+
+showUser();
+
+
+/* البحث */
+
 function search() {
 
     const value =
-        document.getElementById("searchInput").value.trim();
+        document
+        .getElementById("searchInput")
+        .value
+        .trim();
+
 
     if (value === "") {
 
-        alert("اكتب ما الذي تبحث عنه أولاً");
+        alert(
+            "اكتب ما الذي تبحث عنه أولاً"
+        );
 
         return;
     }
 
-    alert("سيتم تفعيل البحث الشامل قريباً 🔎");
+
+    alert(
+        "سيتم تفعيل البحث الشامل قريباً 🔎"
+    );
+
 }
-</script></body>
+
+</script>
+
+
+</body>
+
 </html>
