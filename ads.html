@@ -5,8 +5,7 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>الإعلانات | فلسطين بلاتفورم</title>
 
@@ -78,8 +77,6 @@ margin:auto;
 padding:35px 20px;
 }
 
-/* زر إضافة الإعلان */
-
 .add{
 display:block;
 text-align:center;
@@ -92,8 +89,6 @@ margin-bottom:25px;
 font-weight:bold;
 cursor:pointer;
 }
-
-/* البحث */
 
 .search{
 background:white;
@@ -122,8 +117,6 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* الإعلانات */
-
 .ads-list{
 display:grid;
 grid-template-columns:repeat(3,1fr);
@@ -132,9 +125,35 @@ gap:18px;
 
 .ad-card{
 background:white;
-padding:22px;
 border-radius:15px;
+overflow:hidden;
 box-shadow:0 3px 15px rgba(0,0,0,.07);
+transition:.2s;
+}
+
+.ad-card:hover{
+transform:translateY(-3px);
+}
+
+.ad-image{
+width:100%;
+height:210px;
+object-fit:cover;
+display:block;
+background:#eee;
+}
+
+.ad-no-image{
+height:150px;
+background:#eef2f7;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:55px;
+}
+
+.ad-content{
+padding:20px;
 }
 
 .ad-card h3{
@@ -172,8 +191,6 @@ color:#b51f2a;
 margin:10px 0;
 }
 
-/* لا توجد إعلانات */
-
 .empty{
 background:white;
 padding:40px;
@@ -183,7 +200,7 @@ color:#777;
 grid-column:1/-1;
 }
 
-/* نافذة إضافة الإعلان */
+/* النافذة */
 
 .modal{
 display:none;
@@ -198,7 +215,7 @@ overflow:auto;
 .modal-content{
 background:white;
 max-width:600px;
-margin:40px auto;
+margin:30px auto;
 border-radius:15px;
 padding:25px;
 }
@@ -235,6 +252,49 @@ min-height:120px;
 resize:vertical;
 }
 
+/* الصور */
+
+.image-help{
+font-size:13px;
+color:#777;
+margin-top:6px;
+}
+
+.image-preview{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:8px;
+margin-top:12px;
+}
+
+.preview-box{
+position:relative;
+height:90px;
+border-radius:8px;
+overflow:hidden;
+background:#eee;
+}
+
+.preview-box img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.remove-image{
+position:absolute;
+top:3px;
+left:3px;
+width:25px;
+height:25px;
+border:0;
+border-radius:50%;
+background:#b51f2a;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
 .form-buttons{
 display:flex;
 gap:10px;
@@ -264,15 +324,10 @@ color:#222;
 text-align:center;
 margin-top:15px;
 font-weight:bold;
+line-height:1.6;
 }
-
-/* الهاتف */
 
 @media(max-width:700px){
-
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
 
 .ads-list{
 grid-template-columns:1fr;
@@ -295,6 +350,10 @@ padding:8px 12px;
 font-size:14px;
 }
 
+.image-preview{
+grid-template-columns:repeat(3,1fr);
+}
+
 }
 
 </style>
@@ -304,10 +363,6 @@ font-size:14px;
 
 <body>
 
-
-<!-- =====================
-     الهيدر
-===================== -->
 
 <header>
 
@@ -326,16 +381,9 @@ font-size:14px;
 </header>
 
 
-
-<!-- =====================
-     العنوان
-===================== -->
-
 <section class="hero">
 
-<h1>
-📢 الإعلانات
-</h1>
+<h1>📢 الإعلانات</h1>
 
 <p>
 إعلانات متنوعة من جميع أنحاء فلسطين
@@ -344,26 +392,13 @@ font-size:14px;
 </section>
 
 
-
-<!-- =====================
-     المحتوى
-===================== -->
-
 <main class="container">
 
 
-<!-- إضافة إعلان -->
-
-<a class="add"
-onclick="openAddForm()">
-
+<a class="add" onclick="openAddForm()">
 ➕ أضف إعلانك الآن
-
 </a>
 
-
-
-<!-- البحث -->
 
 <div class="search">
 
@@ -380,9 +415,6 @@ placeholder="ابحث في الإعلانات..."
 </div>
 
 
-
-<!-- قائمة الإعلانات -->
-
 <div
 class="ads-list"
 id="adsList">
@@ -397,14 +429,9 @@ id="adsList">
 </main>
 
 
+<!-- نافذة إضافة إعلان -->
 
-<!-- =====================
-     نافذة إضافة إعلان
-===================== -->
-
-<div
-class="modal"
-id="addModal">
+<div class="modal" id="addModal">
 
 <div class="modal-content">
 
@@ -426,10 +453,10 @@ id="addModal">
 type="text"
 id="title"
 placeholder="مثال: هاتف سامسونج للبيع"
-required>
+required
+>
 
 </div>
-
 
 
 <div class="form-group">
@@ -473,7 +500,6 @@ required>
 </div>
 
 
-
 <div class="form-group">
 
 <label>
@@ -483,10 +509,10 @@ required>
 <textarea
 id="description"
 placeholder="اكتب تفاصيل الإعلان..."
-required></textarea>
+required
+></textarea>
 
 </div>
-
 
 
 <div class="form-group">
@@ -498,10 +524,11 @@ required></textarea>
 <input
 type="number"
 id="price"
-placeholder="مثال: 1500">
+placeholder="مثال: 1500"
+min="0"
+>
 
 </div>
-
 
 
 <div class="form-group">
@@ -513,10 +540,10 @@ placeholder="مثال: 1500">
 <input
 type="text"
 id="city"
-placeholder="مثال: رام الله">
+placeholder="مثال: رام الله"
+>
 
 </div>
-
 
 
 <div class="form-group">
@@ -528,10 +555,37 @@ placeholder="مثال: رام الله">
 <input
 type="tel"
 id="phone"
-placeholder="مثال: 059xxxxxxx">
+placeholder="مثال: 059xxxxxxx"
+>
 
 </div>
 
+
+<!-- الصور -->
+
+<div class="form-group">
+
+<label>
+📷 صور الإعلان
+</label>
+
+<input
+type="file"
+id="images"
+accept="image/jpeg,image/png,image/webp"
+multiple
+>
+
+<div class="image-help">
+يمكنك اختيار حتى 5 صور — الحد الأقصى 5MB للصورة الواحدة.
+</div>
+
+<div
+id="imagePreview"
+class="image-preview">
+</div>
+
+</div>
 
 
 <div class="form-buttons">
@@ -571,11 +625,6 @@ id="message">
 </div>
 
 
-
-<!-- =====================
-     SUPABASE
-===================== -->
-
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
@@ -602,10 +651,12 @@ detectSessionInUrl:true
 );
 
 
+let selectedFiles = [];
 
-/* =====================
+
+/* =========================
    فتح نموذج الإعلان
-===================== */
+========================= */
 
 async function openAddForm(){
 
@@ -637,10 +688,9 @@ document.getElementById(
 }
 
 
-
-/* =====================
+/* =========================
    إغلاق النموذج
-===================== */
+========================= */
 
 function closeAddForm(){
 
@@ -655,10 +705,245 @@ document.getElementById(
 }
 
 
+/* =========================
+   اختيار الصور
+========================= */
 
-/* =====================
-   إضافة الإعلان
-===================== */
+document.getElementById(
+"images"
+).addEventListener(
+"change",
+function(event){
+
+const files =
+Array.from(event.target.files);
+
+
+if(files.length > 5){
+
+alert(
+"يمكنك اختيار 5 صور كحد أقصى."
+);
+
+event.target.value="";
+selectedFiles=[];
+
+renderPreview();
+
+return;
+
+}
+
+
+for(const file of files){
+
+if(!file.type.startsWith("image/")){
+
+alert(
+"يرجى اختيار ملفات صور فقط."
+);
+
+event.target.value="";
+selectedFiles=[];
+
+renderPreview();
+
+return;
+
+}
+
+
+if(file.size > 5 * 1024 * 1024){
+
+alert(
+"حجم الصورة يجب ألا يتجاوز 5MB."
+);
+
+event.target.value="";
+selectedFiles=[];
+
+renderPreview();
+
+return;
+
+}
+
+}
+
+
+selectedFiles=files;
+
+renderPreview();
+
+}
+);
+
+
+/* =========================
+   معاينة الصور
+========================= */
+
+function renderPreview(){
+
+const preview =
+document.getElementById(
+"imagePreview"
+);
+
+preview.innerHTML="";
+
+
+selectedFiles.forEach(
+function(file,index){
+
+const box =
+document.createElement("div");
+
+box.className=
+"preview-box";
+
+
+const img =
+document.createElement("img");
+
+img.src=
+URL.createObjectURL(file);
+
+
+const remove =
+document.createElement("button");
+
+remove.type="button";
+
+remove.className=
+"remove-image";
+
+remove.textContent="×";
+
+
+remove.onclick=
+function(){
+
+selectedFiles.splice(index,1);
+
+renderPreview();
+
+};
+
+
+box.appendChild(img);
+
+box.appendChild(remove);
+
+preview.appendChild(box);
+
+}
+);
+
+}
+
+
+/* =========================
+   رفع الصور
+========================= */
+
+async function uploadImages(
+files,
+userId
+){
+
+const imageUrls=[];
+
+
+for(let i=0;i<files.length;i++){
+
+const file=files[i];
+
+
+/*
+ اسم فريد للصورة
+*/
+
+const extension =
+file.name
+.split(".")
+.pop()
+.toLowerCase();
+
+
+const fileName =
+userId +
+"/" +
+Date.now() +
+"_" +
+Math.random()
+.toString(36)
+.substring(2) +
+"." +
+extension;
+
+
+/*
+ رفع الصورة
+*/
+
+const {
+error:uploadError
+} =
+await supabaseClient
+.storage
+.from("ad-images")
+.upload(
+fileName,
+file,
+{
+cacheControl:"3600",
+upsert:false,
+contentType:file.type
+}
+);
+
+
+if(uploadError){
+
+console.error(uploadError);
+
+throw new Error(
+"فشل رفع إحدى الصور: " +
+uploadError.message
+);
+
+}
+
+
+/*
+ الحصول على الرابط العام
+*/
+
+const {
+data:urlData
+} =
+supabaseClient
+.storage
+.from("ad-images")
+.getPublicUrl(fileName);
+
+
+imageUrls.push(
+urlData.publicUrl
+);
+
+}
+
+
+return imageUrls;
+
+}
+
+
+/* =========================
+   نشر الإعلان
+========================= */
 
 document.getElementById(
 "adForm"
@@ -683,8 +968,7 @@ document.getElementById(
 saveButton.disabled=true;
 
 saveButton.textContent=
-"جاري نشر الإعلان...";
-
+"جاري النشر...";
 
 message.textContent="";
 
@@ -692,7 +976,7 @@ message.textContent="";
 try{
 
 
-/* الحصول على المستخدم */
+/* المستخدم */
 
 const {
 data:userData,
@@ -717,8 +1001,7 @@ const user =
 userData.user;
 
 
-
-/* بيانات الإعلان */
+/* البيانات */
 
 const title =
 document.getElementById(
@@ -762,8 +1045,31 @@ priceValue === ""
 : Number(priceValue);
 
 
+/* رفع الصور */
 
-/* إرسال إلى Supabase */
+let imageUrls=[];
+
+
+if(selectedFiles.length > 0){
+
+message.textContent=
+"📷 جاري رفع الصور...";
+
+
+imageUrls =
+await uploadImages(
+selectedFiles,
+user.id
+);
+
+}
+
+
+/* حفظ الإعلان */
+
+message.textContent=
+"💾 جاري حفظ الإعلان...";
+
 
 const {
 error
@@ -784,7 +1090,9 @@ price:price,
 
 city:city,
 
-phone:phone
+phone:phone,
+
+image_urls:imageUrls
 
 });
 
@@ -794,27 +1102,29 @@ if(error){
 console.error(error);
 
 throw new Error(
-"حدث خطأ أثناء حفظ الإعلان: "
-+
+"حدث خطأ أثناء حفظ الإعلان: " +
 error.message
 );
 
 }
 
 
-
 /* نجاح */
 
-message.textContent =
-"✅ تم نشر الإعلان بنجاح";
-
-message.style.color =
+message.style.color=
 "green";
+
+message.textContent=
+"✅ تم نشر الإعلان بنجاح";
 
 
 document.getElementById(
 "adForm"
 ).reset();
+
+selectedFiles=[];
+
+renderPreview();
 
 
 setTimeout(
@@ -829,15 +1139,16 @@ loadAds();
 );
 
 
-}catch(error){
+}
+catch(error){
 
 console.error(error);
 
-message.textContent =
-"❌ " + error.message;
-
-message.style.color =
+message.style.color=
 "red";
+
+message.textContent=
+"❌ " + error.message;
 
 }
 
@@ -851,12 +1162,171 @@ saveButton.textContent=
 );
 
 
+/* =========================
+   إنشاء بطاقة إعلان
+========================= */
 
-/* =====================
-   تحميل الإعلانات
-===================== */
+function createAdCard(ad){
 
-async function loadAds(){
+const card =
+document.createElement(
+"div"
+);
+
+card.className=
+"ad-card";
+
+
+/* الصورة */
+
+if(
+ad.image_urls &&
+Array.isArray(ad.image_urls) &&
+ad.image_urls.length > 0
+){
+
+const img =
+document.createElement("img");
+
+img.className=
+"ad-image";
+
+img.src=
+ad.image_urls[0];
+
+img.alt=
+ad.title || "صورة الإعلان";
+
+img.loading="lazy";
+
+card.appendChild(img);
+
+}
+else{
+
+const noImage =
+document.createElement("div");
+
+noImage.className=
+"ad-no-image";
+
+noImage.textContent=
+"📷";
+
+card.appendChild(noImage);
+
+}
+
+
+/* المحتوى */
+
+const content =
+document.createElement("div");
+
+content.className=
+"ad-content";
+
+
+const title =
+document.createElement("h3");
+
+title.textContent=
+ad.title || "";
+
+content.appendChild(title);
+
+
+const category =
+document.createElement("div");
+
+category.className=
+"ad-category";
+
+category.textContent=
+ad.category || "";
+
+content.appendChild(category);
+
+
+const description =
+document.createElement("div");
+
+description.className=
+"ad-description";
+
+description.textContent=
+ad.description || "";
+
+content.appendChild(description);
+
+
+if(ad.price !== null){
+
+const price =
+document.createElement("div");
+
+price.className=
+"ad-price";
+
+price.textContent=
+"💰 " +
+Number(ad.price).toLocaleString("ar") +
+" شيكل";
+
+content.appendChild(price);
+
+}
+
+
+const info =
+document.createElement("div");
+
+info.className=
+"ad-info";
+
+info.innerHTML="";
+
+
+if(ad.city){
+
+const city =
+document.createElement("div");
+
+city.textContent=
+"📍 " + ad.city;
+
+info.appendChild(city);
+
+}
+
+
+if(ad.phone){
+
+const phone =
+document.createElement("div");
+
+phone.textContent=
+"📞 " + ad.phone;
+
+info.appendChild(phone);
+
+}
+
+
+content.appendChild(info);
+
+card.appendChild(content);
+
+return card;
+
+}
+
+
+/* =========================
+   عرض الإعلانات
+========================= */
+
+function displayAds(data){
 
 const adsList =
 document.getElementById(
@@ -864,38 +1334,9 @@ document.getElementById(
 );
 
 
-adsList.innerHTML =
-'<div class="empty">جاري تحميل الإعلانات...</div>';
-
-
-const {
-data,
-error
-} =
-await supabaseClient
-.from("ads")
-.select("*")
-.order(
-"created_at",
-{ascending:false}
-);
-
-
-if(error){
-
-console.error(error);
-
-adsList.innerHTML =
-'<div class="empty">حدث خطأ أثناء تحميل الإعلانات.</div>';
-
-return;
-
-}
-
-
 if(!data || data.length===0){
 
-adsList.innerHTML =
+adsList.innerHTML=
 '<div class="empty">لا توجد إعلانات حاليًا.<br><br>كن أول من يضيف إعلانًا!</div>';
 
 return;
@@ -909,55 +1350,9 @@ adsList.innerHTML="";
 data.forEach(
 function(ad){
 
-const card =
-document.createElement(
-"div"
+adsList.appendChild(
+createAdCard(ad)
 );
-
-card.className=
-"ad-card";
-
-
-let priceHTML="";
-
-if(ad.price !== null){
-
-priceHTML =
-`<div class="ad-price">
-💰 ${ad.price} شيكل
-</div>`;
-
-}
-
-
-card.innerHTML = `
-
-<h3>
-${escapeHTML(ad.title)}
-</h3>
-
-<div class="ad-category">
-${escapeHTML(ad.category)}
-</div>
-
-<div class="ad-description">
-${escapeHTML(ad.description || "")}
-</div>
-
-${priceHTML}
-
-<div class="ad-info">
-
-${ad.city ? "📍 " + escapeHTML(ad.city) + "<br>" : ""}
-
-${ad.phone ? "📞 " + escapeHTML(ad.phone) : ""}
-
-</div>
-
-`;
-
-
-adsList.appendChild(card);
 
 }
 );
@@ -965,19 +1360,19 @@ adsList.appendChild(card);
 }
 
 
+/* =========================
+   تحميل الإعلانات
+========================= */
 
-/* =====================
-   البحث
-===================== */
+async function loadAds(){
 
-async function searchAds(){
-
-const value =
+const adsList =
 document.getElementById(
-"searchInput"
-).value
-.trim()
-.toLowerCase();
+"adsList"
+);
+
+adsList.innerHTML=
+'<div class="empty">جاري تحميل الإعلانات...</div>';
 
 
 const {
@@ -989,13 +1384,76 @@ await supabaseClient
 .select("*")
 .order(
 "created_at",
-{ascending:false}
+{
+ascending:false
+}
 );
 
 
 if(error){
 
 console.error(error);
+
+adsList.innerHTML=
+'<div class="empty">حدث خطأ أثناء تحميل الإعلانات.<br><br>' +
+escapeHTML(error.message) +
+'</div>';
+
+return;
+
+}
+
+
+displayAds(data);
+
+}
+
+
+/* =========================
+   البحث
+========================= */
+
+async function searchAds(){
+
+const value =
+document.getElementById(
+"searchInput"
+).value
+.trim()
+.toLowerCase();
+
+
+if(value===""){
+
+loadAds();
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("ads")
+.select("*")
+.order(
+"created_at",
+{
+ascending:false
+}
+);
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"حدث خطأ أثناء البحث."
+);
 
 return;
 
@@ -1032,7 +1490,8 @@ return (
 
 );
 
-});
+}
+);
 
 
 displayAds(filtered);
@@ -1040,95 +1499,29 @@ displayAds(filtered);
 }
 
 
+/* =========================
+   البحث بالضغط Enter
+========================= */
 
-/* =====================
-   عرض الإعلانات
-===================== */
-
-function displayAds(data){
-
-const adsList =
 document.getElementById(
-"adsList"
-);
+"searchInput"
+).addEventListener(
+"keydown",
+function(event){
 
+if(event.key==="Enter"){
 
-if(!data.length){
-
-adsList.innerHTML =
-'<div class="empty">لا توجد نتائج مطابقة للبحث.</div>';
-
-return;
+searchAds();
 
 }
-
-
-adsList.innerHTML="";
-
-
-data.forEach(
-function(ad){
-
-const card =
-document.createElement(
-"div"
-);
-
-card.className=
-"ad-card";
-
-
-let priceHTML="";
-
-if(ad.price !== null){
-
-priceHTML =
-`<div class="ad-price">
-💰 ${ad.price} شيكل
-</div>`;
-
-}
-
-
-card.innerHTML=`
-
-<h3>
-${escapeHTML(ad.title)}
-</h3>
-
-<div class="ad-category">
-${escapeHTML(ad.category)}
-</div>
-
-<div class="ad-description">
-${escapeHTML(ad.description || "")}
-</div>
-
-${priceHTML}
-
-<div class="ad-info">
-
-${ad.city ? "📍 " + escapeHTML(ad.city) + "<br>" : ""}
-
-${ad.phone ? "📞 " + escapeHTML(ad.phone) : ""}
-
-</div>
-
-`;
-
-
-adsList.appendChild(card);
 
 }
 );
 
-}
 
-
-
-/* =====================
+/* =========================
    حماية النصوص
-===================== */
+========================= */
 
 function escapeHTML(text){
 
@@ -1142,10 +1535,9 @@ return String(text)
 }
 
 
-
-/* =====================
+/* =========================
    تشغيل الصفحة
-===================== */
+========================= */
 
 loadAds();
 
@@ -1153,4 +1545,5 @@ loadAds();
 
 
 </body>
-  </html>
+
+     </html>
