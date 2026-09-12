@@ -605,74 +605,75 @@ info.appendChild(phone);
 content.appendChild(info);
 
 
-/* الأزرار */
+/* =========================
+   أزرار الإعلان
+========================= */
 
-const buttons =
-document.createElement("div");
+const buttons = document.createElement("div");
 
-buttons.className="buttons";
+buttons.className = "buttons";
+
+buttons.style.display = "flex";
+buttons.style.gap = "8px";
+buttons.style.marginTop = "18px";
 
 
-/* عرض */
+/* زر عرض */
 
-const view =
-document.createElement("a");
-
-view.className =
-"button view";
+const view = document.createElement("a");
 
 view.href =
 "ad-details.html?id=" +
 encodeURIComponent(ad.id);
 
-view.textContent =
-"👁️ عرض";
+view.textContent = "👁️ عرض";
 
-buttons.appendChild(view);
+view.style.cssText =
+"flex:1;background:#173b68;color:white;padding:12px 5px;border-radius:8px;text-align:center;text-decoration:none;font-weight:bold;display:block;";
 
 
-/* تعديل */
+/* زر تعديل */
 
-const edit =
-document.createElement("a");
-
-edit.className =
-"button edit";
+const edit = document.createElement("a");
 
 edit.href =
 "edit-ad.html?id=" +
 encodeURIComponent(ad.id);
 
-edit.textContent =
-"✏️ تعديل";
+edit.textContent = "✏️ تعديل";
 
-buttons.appendChild(edit);
+edit.style.cssText =
+"flex:1;background:#e9eef5;color:#173b68;padding:12px 5px;border-radius:8px;text-align:center;text-decoration:none;font-weight:bold;display:block;";
 
 
-/* حذف */
+/* زر حذف */
 
 const deleteButton =
 document.createElement("button");
 
-deleteButton.className =
-"button delete";
+deleteButton.type = "button";
 
-deleteButton.textContent =
-"🗑️ حذف";
+deleteButton.textContent = "🗑️ حذف";
 
+deleteButton.style.cssText =
+"flex:1;background:#b51f2a;color:white;padding:12px 5px;border:0;border-radius:8px;text-align:center;font-weight:bold;cursor:pointer;";
 
-deleteButton.onclick =
-function(){
+deleteButton.onclick = function(event){
+
+event.stopPropagation();
 
 deleteAd(ad);
 
 };
 
 
-buttons.appendChild(
-deleteButton
-);
+/* إضافة الأزرار */
 
+buttons.appendChild(view);
+
+buttons.appendChild(edit);
+
+buttons.appendChild(deleteButton);
 
 content.appendChild(buttons);
 
