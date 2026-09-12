@@ -1165,16 +1165,26 @@ saveButton.textContent=
 /* =========================
    إنشاء بطاقة إعلان
 ========================= */
+/* =========================
+   إنشاء بطاقة إعلان
+========================= */
 
 function createAdCard(ad){
 
 const card =
-document.createElement(
-"div"
-);
+document.createElement("div");
 
-card.className=
-"ad-card";
+card.className = "ad-card";
+
+card.style.cursor = "pointer";
+
+card.onclick = function(){
+
+window.location.href =
+"ad-details.html?id=" +
+encodeURIComponent(ad.id);
+
+};
 
 
 /* الصورة */
@@ -1188,29 +1198,31 @@ ad.image_urls.length > 0
 const img =
 document.createElement("img");
 
-img.className=
+img.className =
 "ad-image";
 
-img.src=
+img.src =
 ad.image_urls[0];
 
-img.alt=
+img.alt =
 ad.title || "صورة الإعلان";
 
-img.loading="lazy";
+img.loading =
+"lazy";
 
 card.appendChild(img);
 
 }
+
 else{
 
 const noImage =
 document.createElement("div");
 
-noImage.className=
+noImage.className =
 "ad-no-image";
 
-noImage.textContent=
+noImage.textContent =
 "📷";
 
 card.appendChild(noImage);
@@ -1223,52 +1235,60 @@ card.appendChild(noImage);
 const content =
 document.createElement("div");
 
-content.className=
+content.className =
 "ad-content";
 
+
+/* العنوان */
 
 const title =
 document.createElement("h3");
 
-title.textContent=
+title.textContent =
 ad.title || "";
 
 content.appendChild(title);
 
 
+/* التصنيف */
+
 const category =
 document.createElement("div");
 
-category.className=
+category.className =
 "ad-category";
 
-category.textContent=
+category.textContent =
 ad.category || "";
 
 content.appendChild(category);
 
 
+/* الوصف */
+
 const description =
 document.createElement("div");
 
-description.className=
+description.className =
 "ad-description";
 
-description.textContent=
+description.textContent =
 ad.description || "";
 
 content.appendChild(description);
 
 
-if(ad.price !== null){
+/* السعر */
+
+if(ad.price !== null && ad.price !== undefined){
 
 const price =
 document.createElement("div");
 
-price.className=
+price.className =
 "ad-price";
 
-price.textContent=
+price.textContent =
 "💰 " +
 Number(ad.price).toLocaleString("ar") +
 " شيكل";
@@ -1278,13 +1298,13 @@ content.appendChild(price);
 }
 
 
+/* المعلومات */
+
 const info =
 document.createElement("div");
 
-info.className=
+info.className =
 "ad-info";
-
-info.innerHTML="";
 
 
 if(ad.city){
@@ -1292,7 +1312,7 @@ if(ad.city){
 const city =
 document.createElement("div");
 
-city.textContent=
+city.textContent =
 "📍 " + ad.city;
 
 info.appendChild(city);
@@ -1305,7 +1325,7 @@ if(ad.phone){
 const phone =
 document.createElement("div");
 
-phone.textContent=
+phone.textContent =
 "📞 " + ad.phone;
 
 info.appendChild(phone);
@@ -1319,7 +1339,7 @@ card.appendChild(content);
 
 return card;
 
-}
+   }
 
 
 /* =========================
