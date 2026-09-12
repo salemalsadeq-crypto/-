@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>الإعلانات | فلسطين بلاتفورم</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
 font-family:Arial,Tahoma,sans-serif;
@@ -34,7 +44,9 @@ font-weight:bold;
 color:#173b68;
 }
 
-.logo span{color:#b51f2a}
+.logo span{
+color:#b51f2a;
+}
 
 .back{
 text-decoration:none;
@@ -66,6 +78,8 @@ margin:auto;
 padding:35px 20px;
 }
 
+/* زر إضافة الإعلان */
+
 .add{
 display:block;
 text-align:center;
@@ -76,7 +90,10 @@ padding:14px;
 border-radius:10px;
 margin-bottom:25px;
 font-weight:bold;
+cursor:pointer;
 }
+
+/* البحث */
 
 .search{
 background:white;
@@ -102,126 +119,1038 @@ color:white;
 padding:0 20px;
 border-radius:8px;
 font-size:16px;
+cursor:pointer;
 }
 
-.cards{
+/* الإعلانات */
+
+.ads-list{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:18px;
 }
 
-.card{
+.ad-card{
 background:white;
-padding:25px;
+padding:22px;
 border-radius:15px;
-text-align:center;
 box-shadow:0 3px 15px rgba(0,0,0,.07);
 }
 
-.icon{
-font-size:45px;
-margin-bottom:10px;
-}
-
-.card h3{
+.ad-card h3{
 color:#173b68;
-margin-bottom:6px;
+margin-bottom:10px;
+font-size:20px;
 }
 
-.card p{
-color:#718096;
-font-size:14px;
+.ad-category{
+display:inline-block;
+background:#eef2f7;
+color:#173b68;
+padding:5px 10px;
+border-radius:15px;
+font-size:13px;
+margin-bottom:12px;
 }
+
+.ad-description{
+color:#555;
+line-height:1.7;
+margin-bottom:12px;
+}
+
+.ad-info{
+color:#666;
+font-size:14px;
+line-height:1.8;
+}
+
+.ad-price{
+font-size:19px;
+font-weight:bold;
+color:#b51f2a;
+margin:10px 0;
+}
+
+/* لا توجد إعلانات */
+
+.empty{
+background:white;
+padding:40px;
+border-radius:15px;
+text-align:center;
+color:#777;
+grid-column:1/-1;
+}
+
+/* نافذة إضافة الإعلان */
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:9999;
+padding:20px;
+overflow:auto;
+}
+
+.modal-content{
+background:white;
+max-width:600px;
+margin:40px auto;
+border-radius:15px;
+padding:25px;
+}
+
+.modal h2{
+text-align:center;
+margin-bottom:20px;
+color:#173b68;
+}
+
+.form-group{
+margin-bottom:15px;
+}
+
+.form-group label{
+display:block;
+margin-bottom:7px;
+font-weight:bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:15px;
+font-family:inherit;
+}
+
+.form-group textarea{
+min-height:120px;
+resize:vertical;
+}
+
+.form-buttons{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.form-buttons button{
+flex:1;
+padding:13px;
+border:0;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+}
+
+.save{
+background:#b51f2a;
+color:white;
+}
+
+.cancel{
+background:#eee;
+color:#222;
+}
+
+.message{
+text-align:center;
+margin-top:15px;
+font-weight:bold;
+}
+
+/* الهاتف */
 
 @media(max-width:700px){
+
 .cards{
 grid-template-columns:repeat(2,1fr);
-gap:12px;
+}
+
+.ads-list{
+grid-template-columns:1fr;
 }
 
 .hero h1{
 font-size:28px;
 }
+
+.header{
+gap:10px;
 }
 
-@media(max-width:400px){
-.cards{
-grid-template-columns:1fr;
+.logo{
+font-size:18px;
 }
+
+.back{
+padding:8px 12px;
+font-size:14px;
 }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================
+     الهيدر
+===================== -->
+
 <header>
+
 <div class="header">
-<div class="logo">فلسطين <span>بلاتفورم</span></div>
-<a href="index.html" class="back">← الرئيسية</a>
+
+<div class="logo">
+فلسطين <span>بلاتفورم</span>
 </div>
+
+<a href="index.html" class="back">
+← الرئيسية
+</a>
+
+</div>
+
 </header>
 
+
+
+<!-- =====================
+     العنوان
+===================== -->
+
 <section class="hero">
-<h1>📢 الإعلانات</h1>
-<p>إعلانات متنوعة من جميع أنحاء فلسطين</p>
+
+<h1>
+📢 الإعلانات
+</h1>
+
+<p>
+إعلانات متنوعة من جميع أنحاء فلسطين
+</p>
+
 </section>
+
+
+
+<!-- =====================
+     المحتوى
+===================== -->
 
 <main class="container">
 
-<a href="#" class="add" onclick="addAd()">➕ أضف إعلانك الآن</a>
+
+<!-- إضافة إعلان -->
+
+<a class="add"
+onclick="openAddForm()">
+
+➕ أضف إعلانك الآن
+
+</a>
+
+
+
+<!-- البحث -->
 
 <div class="search">
-<input type="text" placeholder="ابحث في الإعلانات...">
-<button>بحث</button>
+
+<input
+type="text"
+id="searchInput"
+placeholder="ابحث في الإعلانات..."
+>
+
+<button onclick="searchAds()">
+بحث
+</button>
+
 </div>
 
-<div class="cards">
 
-<div class="card">
-<div class="icon">📱</div>
-<h3>أجهزة وإلكترونيات</h3>
-<p>هواتف وأجهزة وإلكترونيات</p>
-</div>
 
-<div class="card">
-<div class="icon">🛋️</div>
-<h3>أثاث ومستلزمات</h3>
-<p>أثاث منزلي ومكتبي</p>
-</div>
+<!-- قائمة الإعلانات -->
 
-<div class="card">
-<div class="icon">🐄</div>
-<h3>مواشي وحيوانات</h3>
-<p>إعلانات المواشي والحيوانات</p>
-</div>
+<div
+class="ads-list"
+id="adsList">
 
-<div class="card">
-<div class="icon">👕</div>
-<h3>ملابس وأغراض شخصية</h3>
-<p>ملابس وأغراض متنوعة</p>
-</div>
-
-<div class="card">
-<div class="icon">📦</div>
-<h3>بيع وشراء</h3>
-<p>منتجات وأغراض مستعملة وجديدة</p>
-</div>
-
-<div class="card">
-<div class="icon">📋</div>
-<h3>إعلانات أخرى</h3>
-<p>مختلف الإعلانات والخدمات</p>
+<div class="empty">
+جاري تحميل الإعلانات...
 </div>
 
 </div>
+
 
 </main>
 
+
+
+<!-- =====================
+     نافذة إضافة إعلان
+===================== -->
+
+<div
+class="modal"
+id="addModal">
+
+<div class="modal-content">
+
+<h2>
+➕ إضافة إعلان جديد
+</h2>
+
+
+<form id="adForm">
+
+
+<div class="form-group">
+
+<label>
+عنوان الإعلان
+</label>
+
+<input
+type="text"
+id="title"
+placeholder="مثال: هاتف سامسونج للبيع"
+required>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+التصنيف
+</label>
+
+<select id="category" required>
+
+<option value="">
+اختر التصنيف
+</option>
+
+<option value="أجهزة وإلكترونيات">
+📱 أجهزة وإلكترونيات
+</option>
+
+<option value="أثاث ومستلزمات">
+🛋️ أثاث ومستلزمات
+</option>
+
+<option value="مواشي وحيوانات">
+🐄 مواشي وحيوانات
+</option>
+
+<option value="ملابس وأغراض شخصية">
+👕 ملابس وأغراض شخصية
+</option>
+
+<option value="بيع وشراء">
+📦 بيع وشراء
+</option>
+
+<option value="إعلانات أخرى">
+📋 إعلانات أخرى
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+الوصف
+</label>
+
+<textarea
+id="description"
+placeholder="اكتب تفاصيل الإعلان..."
+required></textarea>
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+السعر
+</label>
+
+<input
+type="number"
+id="price"
+placeholder="مثال: 1500">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+المحافظة / المدينة
+</label>
+
+<input
+type="text"
+id="city"
+placeholder="مثال: رام الله">
+
+</div>
+
+
+
+<div class="form-group">
+
+<label>
+رقم الهاتف
+</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="مثال: 059xxxxxxx">
+
+</div>
+
+
+
+<div class="form-buttons">
+
+<button
+type="submit"
+class="save"
+id="saveButton">
+
+نشر الإعلان
+
+</button>
+
+
+<button
+type="button"
+class="cancel"
+onclick="closeAddForm()">
+
+إلغاء
+
+</button>
+
+</div>
+
+
+<div
+class="message"
+id="message">
+</div>
+
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================
+     SUPABASE
+===================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
-function addAd(){
-alert("سنفعّل إضافة الإعلانات بعد إنشاء حساب المستخدم وربط قاعدة البيانات.");
+
+const SUPABASE_URL =
+"https://sesbumfedusbjevbsyzl.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY,
+{
+auth:{
+persistSession:true,
+autoRefreshToken:true,
+detectSessionInUrl:true
 }
+}
+);
+
+
+
+/* =====================
+   فتح نموذج الإعلان
+===================== */
+
+async function openAddForm(){
+
+const {
+data,
+error
+} =
+await supabaseClient.auth.getUser();
+
+
+if(error || !data.user){
+
+alert(
+"يجب تسجيل الدخول أولاً لإضافة إعلان."
+);
+
+window.location.href =
+"login.html";
+
+return;
+
+}
+
+
+document.getElementById(
+"addModal"
+).style.display="block";
+
+}
+
+
+
+/* =====================
+   إغلاق النموذج
+===================== */
+
+function closeAddForm(){
+
+document.getElementById(
+"addModal"
+).style.display="none";
+
+document.getElementById(
+"message"
+).textContent="";
+
+}
+
+
+
+/* =====================
+   إضافة الإعلان
+===================== */
+
+document.getElementById(
+"adForm"
+).addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+
+const saveButton =
+document.getElementById(
+"saveButton"
+);
+
+const message =
+document.getElementById(
+"message"
+);
+
+
+saveButton.disabled=true;
+
+saveButton.textContent=
+"جاري نشر الإعلان...";
+
+
+message.textContent="";
+
+
+try{
+
+
+/* الحصول على المستخدم */
+
+const {
+data:userData,
+error:userError
+} =
+await supabaseClient.auth.getUser();
+
+
+if(
+userError ||
+!userData.user
+){
+
+throw new Error(
+"يجب تسجيل الدخول أولاً."
+);
+
+}
+
+
+const user =
+userData.user;
+
+
+
+/* بيانات الإعلان */
+
+const title =
+document.getElementById(
+"title"
+).value.trim();
+
+
+const category =
+document.getElementById(
+"category"
+).value;
+
+
+const description =
+document.getElementById(
+"description"
+).value.trim();
+
+
+const priceValue =
+document.getElementById(
+"price"
+).value;
+
+
+const city =
+document.getElementById(
+"city"
+).value.trim();
+
+
+const phone =
+document.getElementById(
+"phone"
+).value.trim();
+
+
+const price =
+priceValue === ""
+? null
+: Number(priceValue);
+
+
+
+/* إرسال إلى Supabase */
+
+const {
+error
+} =
+await supabaseClient
+.from("ads")
+.insert({
+
+user_id:user.id,
+
+title:title,
+
+category:category,
+
+description:description,
+
+price:price,
+
+city:city,
+
+phone:phone
+
+});
+
+
+if(error){
+
+console.error(error);
+
+throw new Error(
+"حدث خطأ أثناء حفظ الإعلان: "
++
+error.message
+);
+
+}
+
+
+
+/* نجاح */
+
+message.textContent =
+"✅ تم نشر الإعلان بنجاح";
+
+message.style.color =
+"green";
+
+
+document.getElementById(
+"adForm"
+).reset();
+
+
+setTimeout(
+function(){
+
+closeAddForm();
+
+loadAds();
+
+},
+1000
+);
+
+
+}catch(error){
+
+console.error(error);
+
+message.textContent =
+"❌ " + error.message;
+
+message.style.color =
+"red";
+
+}
+
+
+saveButton.disabled=false;
+
+saveButton.textContent=
+"نشر الإعلان";
+
+}
+);
+
+
+
+/* =====================
+   تحميل الإعلانات
+===================== */
+
+async function loadAds(){
+
+const adsList =
+document.getElementById(
+"adsList"
+);
+
+
+adsList.innerHTML =
+'<div class="empty">جاري تحميل الإعلانات...</div>';
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("ads")
+.select("*")
+.order(
+"created_at",
+{ascending:false}
+);
+
+
+if(error){
+
+console.error(error);
+
+adsList.innerHTML =
+'<div class="empty">حدث خطأ أثناء تحميل الإعلانات.</div>';
+
+return;
+
+}
+
+
+if(!data || data.length===0){
+
+adsList.innerHTML =
+'<div class="empty">لا توجد إعلانات حاليًا.<br><br>كن أول من يضيف إعلانًا!</div>';
+
+return;
+
+}
+
+
+adsList.innerHTML="";
+
+
+data.forEach(
+function(ad){
+
+const card =
+document.createElement(
+"div"
+);
+
+card.className=
+"ad-card";
+
+
+let priceHTML="";
+
+if(ad.price !== null){
+
+priceHTML =
+`<div class="ad-price">
+💰 ${ad.price} شيكل
+</div>`;
+
+}
+
+
+card.innerHTML = `
+
+<h3>
+${escapeHTML(ad.title)}
+</h3>
+
+<div class="ad-category">
+${escapeHTML(ad.category)}
+</div>
+
+<div class="ad-description">
+${escapeHTML(ad.description || "")}
+</div>
+
+${priceHTML}
+
+<div class="ad-info">
+
+${ad.city ? "📍 " + escapeHTML(ad.city) + "<br>" : ""}
+
+${ad.phone ? "📞 " + escapeHTML(ad.phone) : ""}
+
+</div>
+
+`;
+
+
+adsList.appendChild(card);
+
+}
+);
+
+}
+
+
+
+/* =====================
+   البحث
+===================== */
+
+async function searchAds(){
+
+const value =
+document.getElementById(
+"searchInput"
+).value
+.trim()
+.toLowerCase();
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("ads")
+.select("*")
+.order(
+"created_at",
+{ascending:false}
+);
+
+
+if(error){
+
+console.error(error);
+
+return;
+
+}
+
+
+const filtered =
+data.filter(
+function(ad){
+
+return (
+
+(ad.title || "")
+.toLowerCase()
+.includes(value)
+
+||
+
+(ad.description || "")
+.toLowerCase()
+.includes(value)
+
+||
+
+(ad.category || "")
+.toLowerCase()
+.includes(value)
+
+||
+
+(ad.city || "")
+.toLowerCase()
+.includes(value)
+
+);
+
+});
+
+
+displayAds(filtered);
+
+}
+
+
+
+/* =====================
+   عرض الإعلانات
+===================== */
+
+function displayAds(data){
+
+const adsList =
+document.getElementById(
+"adsList"
+);
+
+
+if(!data.length){
+
+adsList.innerHTML =
+'<div class="empty">لا توجد نتائج مطابقة للبحث.</div>';
+
+return;
+
+}
+
+
+adsList.innerHTML="";
+
+
+data.forEach(
+function(ad){
+
+const card =
+document.createElement(
+"div"
+);
+
+card.className=
+"ad-card";
+
+
+let priceHTML="";
+
+if(ad.price !== null){
+
+priceHTML =
+`<div class="ad-price">
+💰 ${ad.price} شيكل
+</div>`;
+
+}
+
+
+card.innerHTML=`
+
+<h3>
+${escapeHTML(ad.title)}
+</h3>
+
+<div class="ad-category">
+${escapeHTML(ad.category)}
+</div>
+
+<div class="ad-description">
+${escapeHTML(ad.description || "")}
+</div>
+
+${priceHTML}
+
+<div class="ad-info">
+
+${ad.city ? "📍 " + escapeHTML(ad.city) + "<br>" : ""}
+
+${ad.phone ? "📞 " + escapeHTML(ad.phone) : ""}
+
+</div>
+
+`;
+
+
+adsList.appendChild(card);
+
+}
+);
+
+}
+
+
+
+/* =====================
+   حماية النصوص
+===================== */
+
+function escapeHTML(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+
+/* =====================
+   تشغيل الصفحة
+===================== */
+
+loadAds();
+
 </script>
 
+
 </body>
-</html>
+  </html>
