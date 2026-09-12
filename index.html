@@ -437,7 +437,6 @@ footer {
 
 </footer>
 
-
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -449,88 +448,133 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
-const supabaseClient =
-supabase.createClient(
+
+const supabaseClient = supabase.createClient(
     SUPABASE_URL,
-    SUPABASE_KEY
+    SUPABASE_KEY,
+    {
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
+        }
+    }
 );
 
+
 const userName =
-document.getElementById("userName");
+    document.getElementById("userName");
 
 const loginLink =
-document.getElementById("loginLink");
+    document.getElementById("loginLink");
 
 
-async function loadUser() {
+async function checkUser() {
+
+    console.log("بدأ فحص المستخدم...");
+
 
     try {
 
-        const result =
-        await supabaseClient.auth.getSession();
-
-        const session =
-        result.data.session;
-
-        console.log("SESSION:", session);
+        const {
+            data,
+            error
+        } = await supabaseClient.auth.getUser();
 
 
-        if (session && session.user) {
+        console.log("USER:", data);
+        console.log("ERROR:", error);
 
-            const user =
-            session.user;
+
+        if (error) {
+
+            console.error(
+                "Supabase error:",
+                error
+            );
+
+            return;
+        }
+
+
+        const user = data.user;
+
+
+        if (user) {
+
+            console.log(
+                "المستخدم مسجل:",
+                user.email
+            );
+
 
             const name =
-            user.user_metadata?.name ||
-            user.user_metadata?.full_name ||
-            user.email ||
-            "المستخدم";
+                user.user_metadata?.name ||
+                user.user_metadata?.full_name ||
+                user.email ||
+                "المستخدم";
 
 
             userName.textContent =
-            "مرحباً، " + name;
+                "مرحباً، " + name;
 
 
             loginLink.textContent =
-            "تسجيل الخروج";
+                "تسجيل الخروج";
+
 
             loginLink.href =
-            "#";
+                "#";
 
 
             loginLink.onclick =
-            async function(event) {
+                async function(event) {
 
-                event.preventDefault();
+                    event.preventDefault();
 
-                const { error } =
-                await supabaseClient.auth.signOut();
 
-                if (!error) {
+                    const {
+                        error
+                    } =
+                    await supabaseClient.auth.signOut();
+
+
+                    if (error) {
+
+                        console.error(error);
+
+                        return;
+                    }
+
 
                     window.location.href =
-                    "login.html";
+                        "login.html";
 
-                }
+                };
 
-            };
 
         } else {
+
+            console.log(
+                "لا يوجد مستخدم مسجل"
+            );
+
 
             userName.textContent = "";
 
             loginLink.textContent =
-            "تسجيل الدخول";
+                "تسجيل الدخول";
 
             loginLink.href =
-            "login.html";
+                "login.html";
 
         }
+
 
     } catch (error) {
 
         console.error(
-            "خطأ في قراءة الجلسة:",
+            "خطأ:",
             error
         );
 
@@ -539,36 +583,65 @@ async function loadUser() {
 }
 
 
-/* مراقبة تسجيل الدخول والخروج */
+/*
+ * مراقبة تسجيل الدخول والخروج
+ */
 
 supabaseClient.auth.onAuthStateChange(
     function(event, session) {
 
         console.log(
-            "Auth:",
+            "AUTH EVENT:",
             event
         );
 
-        loadUser();
+        if (session) {
+
+            const user =
+                session.user;
+
+            const name =
+                user.user_metadata?.name ||
+                user.user_metadata?.full_name ||
+                user.email ||
+                "المستخدم";
+
+
+            userName.textContent =
+                "مرحباً، " + name;
+
+
+            loginLink.textContent =
+                "تسجيل الخروج";
+
+
+            loginLink.href =
+                "#";
+
+        }
 
     }
 );
 
 
-/* تشغيل عند فتح الصفحة */
+/*
+ * فحص المستخدم عند فتح الصفحة
+ */
 
-loadUser();
+checkUser();
 
 
-/* البحث */
+/*
+ * البحث
+ */
 
 function search() {
 
     const value =
-    document
-    .getElementById("searchInput")
-    .value
-    .trim();
+        document
+        .getElementById("searchInput")
+        .value
+        .trim();
 
 
     if (value === "") {
@@ -588,8 +661,6 @@ function search() {
 }
 
 </script>
-      
-
 
 </body>
 
