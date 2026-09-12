@@ -5,34 +5,33 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>الإعلانات | فلسطين بلاتفورم</title>
 
 <style>
 
 /* =========================
-   الإعدادات العامة
+   عام
 ========================= */
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:Arial,Tahoma,sans-serif;
-    background:#f5f7fa;
-    color:#172033;
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: #f5f7fa;
+    color: #172033;
 }
 
 button,
 input,
 select,
-textarea{
-    font-family:inherit;
+textarea {
+    font-family: inherit;
 }
 
 
@@ -40,38 +39,37 @@ textarea{
    الهيدر
 ========================= */
 
-header{
-    background:white;
-    padding:16px 20px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+header {
+    background: white;
+    padding: 16px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
 }
 
-.header{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
+.header {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:bold;
-    color:#173b68;
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #173b68;
 }
 
-.logo span{
-    color:#b51f2a;
+.logo span {
+    color: #b51f2a;
 }
 
-.back{
-    text-decoration:none;
-    background:#173b68;
-    color:white;
-    padding:9px 16px;
-    border-radius:8px;
-    white-space:nowrap;
+.back {
+    text-decoration: none;
+    background: #173b68;
+    color: white;
+    padding: 9px 16px;
+    border-radius: 8px;
 }
 
 
@@ -79,56 +77,51 @@ header{
    العنوان
 ========================= */
 
-.hero{
-    background:#173b68;
-    color:white;
-    text-align:center;
-    padding:45px 20px;
+.hero {
+    background: #173b68;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
 }
 
-.hero h1{
-    font-size:34px;
-    margin-bottom:10px;
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
 }
 
-.hero p{
-    font-size:17px;
-}
-
-
-/* =========================
-   الحاوية
-========================= */
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:35px 20px;
+.hero p {
+    font-size: 17px;
 }
 
 
 /* =========================
-   إضافة إعلان
+   المحتوى
 ========================= */
 
-.add{
-    display:block;
-    text-align:center;
-    background:#b51f2a;
-    color:white;
-    text-decoration:none;
-    padding:14px;
-    border-radius:10px;
-    margin-bottom:20px;
-    font-weight:bold;
-    cursor:pointer;
-    border:0;
-    width:100%;
-    font-size:16px;
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
 }
 
-.add:hover{
-    opacity:.9;
+
+/* =========================
+   زر إضافة إعلان
+========================= */
+
+.add {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #b51f2a;
+    color: white;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
 }
 
 
@@ -136,214 +129,202 @@ header{
    البحث والفلاتر
 ========================= */
 
-.filters{
-    background:white;
-    padding:18px;
-    border-radius:14px;
-    margin-bottom:25px;
-    box-shadow:0 3px 15px rgba(0,0,0,.06);
+.filters {
+    background: white;
+    padding: 18px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 15px rgba(0,0,0,.06);
 }
 
-.search{
-    display:flex;
-    gap:8px;
-    margin-bottom:15px;
+.search {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
-.search input{
-    flex:1;
-    border:1px solid #ddd;
-    outline:0;
-    padding:13px;
-    font-size:16px;
-    border-radius:8px;
+.search input {
+    flex: 1;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 13px;
+    font-size: 16px;
+    border-radius: 8px;
 }
 
-.search input:focus{
-    border-color:#173b68;
+.search button {
+    border: none;
+    background: #b51f2a;
+    color: white;
+    padding: 0 22px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.search button{
-    border:0;
-    background:#b51f2a;
-    color:white;
-    padding:0 22px;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
-.filter-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
+.filter-grid input,
+.filter-grid select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    outline: none;
 }
 
-.filter-grid select,
-.filter-grid input{
-    width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:14px;
-    background:white;
-    outline:0;
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
 }
 
-.filter-grid select:focus,
-.filter-grid input:focus{
-    border-color:#173b68;
+.filter-buttons button {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
 }
 
-.filter-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:12px;
+.apply {
+    background: #173b68;
+    color: white;
 }
 
-.filter-buttons button{
-    border:0;
-    padding:11px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:14px;
-}
-
-.apply{
-    background:#173b68;
-    color:white;
-}
-
-.clear{
-    background:#eee;
-    color:#222;
+.clear {
+    background: #eee;
+    color: #222;
 }
 
 
 /* =========================
-   معلومات النتائج
+   النتائج والترتيب
 ========================= */
 
-.results-info{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
-    gap:10px;
+.results-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
 }
 
-.results-count{
-    font-size:15px;
-    color:#555;
+.results-count {
+    color: #555;
 }
 
-.sort-select{
-    padding:9px 12px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    background:white;
-    outline:0;
+.sort-select {
+    padding: 9px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
 }
 
 
 /* =========================
-   الإعلانات
+   بطاقات الإعلانات
 ========================= */
 
-.ads-list{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
+.ads-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.ad-card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:0 3px 15px rgba(0,0,0,.07);
-    transition:.2s;
-    cursor:pointer;
+.ad-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,.07);
+    cursor: pointer;
+    transition: .2s;
 }
 
-.ad-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 6px 20px rgba(0,0,0,.12);
+.ad-card:hover {
+    transform: translateY(-3px);
 }
 
-.ad-image{
-    width:100%;
-    height:210px;
-    object-fit:cover;
-    display:block;
-    background:#eee;
+.ad-image {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    background: #eee;
 }
 
-.ad-no-image{
-    height:210px;
-    background:#eef2f7;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:55px;
+.ad-no-image {
+    height: 210px;
+    background: #eef2f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
 }
 
-.ad-content{
-    padding:18px;
+.ad-content {
+    padding: 18px;
 }
 
-.ad-card h3{
-    color:#173b68;
-    margin-bottom:10px;
-    font-size:20px;
+.ad-card h3 {
+    color: #173b68;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
-.ad-category{
-    display:inline-block;
-    background:#eef2f7;
-    color:#173b68;
-    padding:5px 10px;
-    border-radius:15px;
-    font-size:13px;
-    margin-bottom:10px;
+.ad-category {
+    display: inline-block;
+    background: #eef2f7;
+    color: #173b68;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-.ad-description{
-    color:#555;
-    line-height:1.7;
-    margin-bottom:10px;
-    
-    display:-webkit-box;
-    -webkit-line-clamp:2;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.ad-description {
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.ad-info{
-    color:#666;
-    font-size:14px;
-    line-height:1.8;
+.ad-price {
+    font-size: 19px;
+    font-weight: bold;
+    color: #b51f2a;
+    margin: 10px 0;
 }
 
-.ad-price{
-    font-size:19px;
-    font-weight:bold;
-    color:#b51f2a;
-    margin:10px 0;
+.ad-info {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
 }
 
-.ad-date{
-    color:#888;
-    font-size:12px;
-    margin-top:5px;
+.ad-date {
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-.empty{
-    background:white;
-    padding:50px 20px;
-    border-radius:15px;
-    text-align:center;
-    color:#777;
-    grid-column:1/-1;
+.empty {
+    background: white;
+    padding: 50px 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: #777;
+    grid-column: 1 / -1;
 }
 
 
@@ -351,53 +332,53 @@ header{
    النافذة
 ========================= */
 
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.55);
-    z-index:9999;
-    padding:20px;
-    overflow:auto;
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    padding: 20px;
+    overflow: auto;
 }
 
-.modal-content{
-    background:white;
-    max-width:600px;
-    margin:30px auto;
-    border-radius:15px;
-    padding:25px;
+.modal-content {
+    background: white;
+    max-width: 600px;
+    margin: 30px auto;
+    border-radius: 15px;
+    padding: 25px;
 }
 
-.modal h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#173b68;
+.modal h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #173b68;
 }
 
-.form-group{
-    margin-bottom:15px;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.form-group label{
-    display:block;
-    margin-bottom:7px;
-    font-weight:bold;
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
 }
 
 .form-group input,
 .form-group select,
-.form-group textarea{
-    width:100%;
-    padding:12px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    font-size:15px;
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
 }
 
-.form-group textarea{
-    min-height:120px;
-    resize:vertical;
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 
@@ -405,45 +386,45 @@ header{
    الصور
 ========================= */
 
-.image-help{
-    font-size:13px;
-    color:#777;
-    margin-top:6px;
+.image-help {
+    font-size: 13px;
+    color: #777;
+    margin-top: 6px;
 }
 
-.image-preview{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
-    margin-top:12px;
+.image-preview {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 12px;
 }
 
-.preview-box{
-    position:relative;
-    height:90px;
-    border-radius:8px;
-    overflow:hidden;
-    background:#eee;
+.preview-box {
+    position: relative;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #eee;
 }
 
-.preview-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.preview-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.remove-image{
-    position:absolute;
-    top:3px;
-    left:3px;
-    width:25px;
-    height:25px;
-    border:0;
-    border-radius:50%;
-    background:#b51f2a;
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
+.remove-image {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    border-radius: 50%;
+    background: #b51f2a;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 
@@ -451,36 +432,36 @@ header{
    أزرار النموذج
 ========================= */
 
-.form-buttons{
-    display:flex;
-    gap:10px;
-    margin-top:20px;
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.form-buttons button{
-    flex:1;
-    padding:13px;
-    border:0;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
+.form-buttons button {
+    flex: 1;
+    padding: 13px;
+    border: 0;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.save{
-    background:#b51f2a;
-    color:white;
+.save {
+    background: #b51f2a;
+    color: white;
 }
 
-.cancel{
-    background:#eee;
-    color:#222;
+.cancel {
+    background: #eee;
+    color: #222;
 }
 
-.message{
-    text-align:center;
-    margin-top:15px;
-    font-weight:bold;
-    line-height:1.6;
+.message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    line-height: 1.6;
 }
 
 
@@ -488,82 +469,82 @@ header{
    الهاتف
 ========================= */
 
-@media(max-width:800px){
+@media (max-width: 800px) {
 
-    .ads-list{
-        grid-template-columns:repeat(2,1fr);
+    .ads-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .filter-grid{
-        grid-template-columns:repeat(2,1fr);
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
 }
 
-@media(max-width:600px){
+@media (max-width: 600px) {
 
-    .header{
-        gap:10px;
+    header {
+        padding: 13px 12px;
     }
 
-    .logo{
-        font-size:18px;
+    .logo {
+        font-size: 18px;
     }
 
-    .back{
-        padding:8px 12px;
-        font-size:14px;
+    .back {
+        font-size: 13px;
+        padding: 8px 11px;
     }
 
-    .hero h1{
-        font-size:28px;
+    .hero {
+        padding: 35px 15px;
     }
 
-    .hero p{
-        font-size:15px;
+    .hero h1 {
+        font-size: 28px;
     }
 
-    .container{
-        padding:25px 12px;
+    .hero p {
+        font-size: 15px;
     }
 
-    .search{
-        flex-direction:column;
+    .container {
+        padding: 25px 12px;
+    }
+
+    .search {
+        flex-direction: column;
     }
 
     .search input,
-    .search button{
-        width:100%;
-        min-height:46px;
+    .search button {
+        width: 100%;
+        min-height: 46px;
     }
 
-    .filter-grid{
-        grid-template-columns:1fr;
+    .filter-grid {
+        grid-template-columns: 1fr;
     }
 
-    .filter-buttons{
-        flex-direction:column;
+    .filter-buttons {
+        flex-direction: column;
     }
 
-    .filter-buttons button{
-        width:100%;
+    .results-info {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .results-info{
-        flex-direction:column;
-        align-items:stretch;
+    .sort-select {
+        width: 100%;
     }
 
-    .sort-select{
-        width:100%;
+    .ads-list {
+        grid-template-columns: 1fr;
     }
 
-    .ads-list{
-        grid-template-columns:1fr;
-    }
-
-    .image-preview{
-        grid-template-columns:repeat(3,1fr);
+    .image-preview {
+        grid-template-columns: repeat(3, 1fr);
     }
 
 }
@@ -621,12 +602,14 @@ header{
      إضافة إعلان
 ========================= -->
 
-<a class="add"
-   onclick="openAddForm()">
+<button
+type="button"
+class="add"
+id="addButton">
 
 ➕ أضف إعلانك الآن
 
-</a>
+</button>
 
 
 <!-- =========================
@@ -644,8 +627,12 @@ id="searchInput"
 placeholder="ابحث عن هاتف، سيارة، أثاث، خدمة..."
 >
 
-<button onclick="applyFilters()">
+<button
+type="button"
+id="searchButton">
+
 🔎 بحث
+
 </button>
 
 </div>
@@ -653,8 +640,6 @@ placeholder="ابحث عن هاتف، سيارة، أثاث، خدمة..."
 
 <div class="filter-grid">
 
-
-<!-- التصنيف -->
 
 <select id="categoryFilter">
 
@@ -689,16 +674,12 @@ placeholder="ابحث عن هاتف، سيارة، أثاث، خدمة..."
 </select>
 
 
-<!-- المدينة -->
-
 <input
 type="text"
 id="cityFilter"
 placeholder="📍 المدينة / المحافظة"
 >
 
-
-<!-- السعر الأدنى -->
 
 <input
 type="number"
@@ -708,8 +689,6 @@ min="0"
 >
 
 
-<!-- السعر الأعلى -->
-
 <input
 type="number"
 id="maxPrice"
@@ -717,15 +696,15 @@ placeholder="💰 أعلى سعر"
 min="0"
 >
 
-
 </div>
 
 
 <div class="filter-buttons">
 
 <button
+type="button"
 class="apply"
-onclick="applyFilters()">
+id="applyButton">
 
 تطبيق الفلاتر
 
@@ -733,8 +712,9 @@ onclick="applyFilters()">
 
 
 <button
+type="button"
 class="clear"
-onclick="clearFilters()">
+id="clearButton">
 
 مسح الفلاتر
 
@@ -746,7 +726,7 @@ onclick="clearFilters()">
 
 
 <!-- =========================
-     النتائج
+     عدد النتائج والترتيب
 ========================= -->
 
 <div class="results-info">
@@ -762,8 +742,7 @@ id="resultsCount">
 
 <select
 class="sort-select"
-id="sortSelect"
-onchange="applyFilters()">
+id="sortSelect">
 
 <option value="newest">
 الأحدث أولاً
@@ -787,7 +766,7 @@ onchange="applyFilters()">
 
 
 <!-- =========================
-     قائمة الإعلانات
+     الإعلانات
 ========================= -->
 
 <div
@@ -804,9 +783,8 @@ id="adsList">
 </main>
 
 
-
 <!-- =========================
-     نافذة إضافة إعلان
+     نافذة إضافة الإعلان
 ========================= -->
 
 <div
@@ -825,8 +803,6 @@ id="addModal">
 <form id="adForm">
 
 
-<!-- العنوان -->
-
 <div class="form-group">
 
 <label>
@@ -842,8 +818,6 @@ required
 
 </div>
 
-
-<!-- التصنيف -->
 
 <div class="form-group">
 
@@ -888,8 +862,6 @@ required>
 </div>
 
 
-<!-- الوصف -->
-
 <div class="form-group">
 
 <label>
@@ -904,8 +876,6 @@ required
 
 </div>
 
-
-<!-- السعر -->
 
 <div class="form-group">
 
@@ -923,8 +893,6 @@ min="0"
 </div>
 
 
-<!-- المدينة -->
-
 <div class="form-group">
 
 <label>
@@ -934,13 +902,11 @@ min="0"
 <input
 type="text"
 id="city"
-placeholder="مثال: رام الله"
+placeholder="مثال: نابلس"
 >
 
 </div>
 
-
-<!-- الهاتف -->
 
 <div class="form-group">
 
@@ -956,8 +922,6 @@ placeholder="مثال: 059xxxxxxx"
 
 </div>
 
-
-<!-- الصور -->
 
 <div class="form-group">
 
@@ -984,8 +948,6 @@ class="image-preview">
 </div>
 
 
-<!-- الأزرار -->
-
 <div class="form-buttons">
 
 <button
@@ -1001,7 +963,7 @@ id="saveButton">
 <button
 type="button"
 class="cancel"
-onclick="closeAddForm()">
+id="cancelButton">
 
 إلغاء
 
@@ -1023,9 +985,8 @@ id="message">
 </div>
 
 
-
 <!-- =========================
-     SUPABASE
+     Supabase
 ========================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -1033,9 +994,9 @@ id="message">
 
 <script>
 
-/* =========================
-   بيانات Supabase
-========================= */
+/* =====================================================
+   إعداد Supabase
+===================================================== */
 
 const SUPABASE_URL =
 "https://sesbumfedusbjevbsyzl.supabase.co";
@@ -1044,103 +1005,135 @@ const SUPABASE_KEY =
 "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
 
-/* =========================
-   الاتصال بـ Supabase
-========================= */
-
 const supabaseClient =
 supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY,
     {
-        auth:{
-            persistSession:true,
-            autoRefreshToken:true,
-            detectSessionInUrl:true
+        auth: {
+            persistSession: true,
+            autoRefreshToken: true,
+            detectSessionInUrl: true
         }
     }
 );
 
 
-/* =========================
-   متغيرات
-========================= */
+/* =====================================================
+   المتغيرات
+===================================================== */
 
 let selectedFiles = [];
 
 let allAds = [];
 
 
-/* =========================
-   فتح نموذج الإعلان
-========================= */
+/* =====================================================
+   عناصر الصفحة
+===================================================== */
 
-async function openAddForm(){
+const addButton =
+document.getElementById("addButton");
 
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .auth
-    .getUser();
+const addModal =
+document.getElementById("addModal");
+
+const cancelButton =
+document.getElementById("cancelButton");
+
+const adForm =
+document.getElementById("adForm");
+
+const imagesInput =
+document.getElementById("images");
+
+const imagePreview =
+document.getElementById("imagePreview");
+
+const message =
+document.getElementById("message");
+
+const saveButton =
+document.getElementById("saveButton");
+
+const adsList =
+document.getElementById("adsList");
+
+const resultsCount =
+document.getElementById("resultsCount");
+
+const searchInput =
+document.getElementById("searchInput");
+
+const searchButton =
+document.getElementById("searchButton");
+
+const categoryFilter =
+document.getElementById("categoryFilter");
+
+const cityFilter =
+document.getElementById("cityFilter");
+
+const minPrice =
+document.getElementById("minPrice");
+
+const maxPrice =
+document.getElementById("maxPrice");
+
+const applyButton =
+document.getElementById("applyButton");
+
+const clearButton =
+document.getElementById("clearButton");
+
+const sortSelect =
+document.getElementById("sortSelect");
 
 
-    if(error || !data.user){
+/* =====================================================
+   فتح نافذة إضافة إعلان
+===================================================== */
 
-        alert(
-            "يجب تسجيل الدخول أولاً لإضافة إعلان."
-        );
-
-        window.location.href =
-            "login.html";
-
-        return;
-    }
-
-
-    document.getElementById(
-        "addModal"
-    ).style.display =
-        "block";
-}
-
-
-/* =========================
-   إغلاق النموذج
-========================= */
-
-function closeAddForm(){
-
-    document.getElementById(
-        "addModal"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "message"
-    ).textContent = "";
-
-}
-
-
-/* =========================
-   إغلاق النافذة عند الضغط خارجها
-========================= */
-
-document.getElementById(
-    "addModal"
-).addEventListener(
+addButton.addEventListener(
     "click",
-    function(event){
+    async function(){
 
-        if(
-            event.target ===
-            this
-        ){
+        try {
 
-            closeAddForm();
+            const {
+                data,
+                error
+            } =
+            await supabaseClient
+            .auth
+            .getUser();
+
+
+            if(error || !data.user){
+
+                alert(
+                    "يجب تسجيل الدخول أولاً لإضافة إعلان."
+                );
+
+                window.location.href =
+                    "login.html";
+
+                return;
+            }
+
+
+            addModal.style.display =
+                "block";
+
+        }
+
+        catch(error){
+
+            console.error(error);
+
+            alert(
+                "حدث خطأ. يرجى تسجيل الدخول مرة أخرى."
+            );
 
         }
 
@@ -1148,19 +1141,49 @@ document.getElementById(
 );
 
 
-/* =========================
-   اختيار الصور
-========================= */
+/* =====================================================
+   إغلاق النافذة
+===================================================== */
 
-document.getElementById(
-    "images"
-).addEventListener(
-    "change",
+cancelButton.addEventListener(
+    "click",
+    function(){
+
+        addModal.style.display =
+            "none";
+
+    }
+);
+
+
+/* إغلاق عند الضغط خارج النافذة */
+
+addModal.addEventListener(
+    "click",
     function(event){
+
+        if(event.target === addModal){
+
+            addModal.style.display =
+                "none";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   اختيار الصور
+===================================================== */
+
+imagesInput.addEventListener(
+    "change",
+    function(){
 
         const files =
             Array.from(
-                event.target.files
+                imagesInput.files
             );
 
 
@@ -1170,9 +1193,11 @@ document.getElementById(
                 "يمكنك اختيار 5 صور كحد أقصى."
             );
 
-            event.target.value = "";
+            imagesInput.value =
+                "";
 
-            selectedFiles = [];
+            selectedFiles =
+                [];
 
             renderPreview();
 
@@ -1180,7 +1205,9 @@ document.getElementById(
         }
 
 
-        for(const file of files){
+        for(
+            const file of files
+        ){
 
             if(
                 !file.type.startsWith(
@@ -1189,12 +1216,14 @@ document.getElementById(
             ){
 
                 alert(
-                    "يرجى اختيار ملفات صور فقط."
+                    "يرجى اختيار صور فقط."
                 );
 
-                event.target.value = "";
+                imagesInput.value =
+                    "";
 
-                selectedFiles = [];
+                selectedFiles =
+                    [];
 
                 renderPreview();
 
@@ -1211,9 +1240,11 @@ document.getElementById(
                     "حجم الصورة يجب ألا يتجاوز 5MB."
                 );
 
-                event.target.value = "";
+                imagesInput.value =
+                    "";
 
-                selectedFiles = [];
+                selectedFiles =
+                    [];
 
                 renderPreview();
 
@@ -1223,7 +1254,8 @@ document.getElementById(
         }
 
 
-        selectedFiles = files;
+        selectedFiles =
+            files;
 
         renderPreview();
 
@@ -1231,23 +1263,18 @@ document.getElementById(
 );
 
 
-/* =========================
-   معاينة الصور
-========================= */
+/* =====================================================
+   عرض معاينة الصور
+===================================================== */
 
 function renderPreview(){
 
-    const preview =
-        document.getElementById(
-            "imagePreview"
-        );
-
-
-    preview.innerHTML = "";
+    imagePreview.innerHTML =
+        "";
 
 
     selectedFiles.forEach(
-        function(file,index){
+        function(file, index){
 
             const box =
                 document.createElement(
@@ -1284,7 +1311,8 @@ function renderPreview(){
                 "×";
 
 
-            remove.onclick =
+            remove.addEventListener(
+                "click",
                 function(){
 
                     selectedFiles.splice(
@@ -1294,14 +1322,15 @@ function renderPreview(){
 
                     renderPreview();
 
-                };
+                }
+            );
 
 
             box.appendChild(img);
 
             box.appendChild(remove);
 
-            preview.appendChild(box);
+            imagePreview.appendChild(box);
 
         }
     );
@@ -1309,9 +1338,9 @@ function renderPreview(){
 }
 
 
-/* =========================
+/* =====================================================
    رفع الصور
-========================= */
+===================================================== */
 
 async function uploadImages(
     files,
@@ -1350,129 +1379,21 @@ async function uploadImages(
             extension;
 
 
-        const {
-            error:uploadError
-        } =
-        await supabaseClient
-        .storage
-        .from("ad-images")
-        .upload(
-            fileName,
-            file,
-            {
-                cacheControl:"3600",
-                upsert:false,
-                contentType:file.type
-            }
-        );
-
-
-        if(uploadError){
-
-            console.error(
-                uploadError
-            );
-
-            throw new Error(
-                "فشل رفع إحدى الصور: " +
-                uploadError.message
-            );
-
-        }
-
-
-        const {
-            data:urlData
-        } =
-        supabaseClient
-        .storage
-        .from("ad-images")
-        .getPublicUrl(
-            fileName
-        );
-
-
-        imageUrls.push(
-            urlData.publicUrl
-        );
-
-    }
-
-
-    return imageUrls;
-
-}
-
-
-/* =========================
-   نشر الإعلان
-========================= */
-
-document.getElementById(
-    "adForm"
-).addEventListener(
-    "submit",
-    async function(event){
-
-        event.preventDefault();
-
-
-        const saveButton =
-            document.getElementById(
-                "saveButton"
-            );
-
-
-        const message =
-            document.getElementById(
-                "message"
-            );
-
-
-        saveButton.disabled =
-            true;
-
-        saveButton.textContent =
-            "جاري النشر...";
-
-        message.textContent =
-            "";
-
-        message.style.color =
-            "";
-
-
-        try{
-
-
-            /* المستخدم */
-
-            const {
-                data:userData,
-                error:userError
-            } =
+        const result =
             await supabaseClient
-            .auth
-            .getUser();
+            .storage
+            .from("ad-images")
+            .upload(
+                fileName,
+                file,
+                {
+                    cacheControl:"3600",
+                    upsert:false,
+                    contentType:file.type
+                }
+            );
 
 
-            if(
-                userError ||
-                !userData.user
-            ){
+        if(result.error){
 
-                throw new Error(
-                    "يجب تسجيل الدخول أولاً."
-                );
-
-            }
-
-
-            const user =
-                userData.user;
-
-
-            /* البيانات */
-
-            const title =
-                document.getElement
+            console.er
