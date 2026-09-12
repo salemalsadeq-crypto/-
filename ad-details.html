@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تفاصيل الإعلان | فلسطين بلاتفورم</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,Tahoma,sans-serif;
+background:#f5f7fa;
+color:#172033;
+}
+
+/* الهيدر */
+
+header{
+background:white;
+padding:16px 20px;
+box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.header{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#173b68;
+}
+
+.logo span{
+color:#b51f2a;
+}
+
+.back{
+text-decoration:none;
+background:#173b68;
+color:white;
+padding:9px 16px;
+border-radius:8px;
+}
+
+/* الصفحة */
+
+.container{
+max-width:1000px;
+margin:35px auto;
+padding:0 20px;
+}
+
+/* بطاقة الإعلان */
+
+.ad-details{
+background:white;
+border-radius:18px;
+box-shadow:0 4px 20px rgba(0,0,0,.08);
+overflow:hidden;
+}
+
+/* معرض الصور */
+
+.gallery{
+background:#eef2f7;
+padding:20px;
+}
+
+.main-image{
+width:100%;
+height:480px;
+object-fit:contain;
+background:#eee;
+border-radius:12px;
+display:block;
+}
+
+.thumbnails{
+display:flex;
+gap:10px;
+margin-top:12px;
+overflow-x:auto;
+padding-bottom:5px;
+}
+
+.thumbnail{
+width:85px;
+height:70px;
+object-fit:cover;
+border-radius:8px;
+cursor:pointer;
+border:3px solid transparent;
+background:#ddd;
+flex-shrink:0;
+}
+
+.thumbnail.active{
+border-color:#b51f2a;
+}
+
+/* المحتوى */
+
+.content{
+padding:30px;
+}
+
+.title{
+font-size:30px;
+color:#173b68;
+margin-bottom:12px;
+}
+
+.category{
+display:inline-block;
+background:#eef2f7;
+color:#173b68;
+padding:7px 14px;
+border-radius:20px;
+font-size:14px;
+margin-bottom:20px;
+}
+
+.price{
+font-size:27px;
+font-weight:bold;
+color:#b51f2a;
+margin-bottom:20px;
+}
+
+.description-title{
+font-size:20px;
+color:#173b68;
+margin-bottom:10px;
+}
+
+.description{
+line-height:2;
+font-size:17px;
+color:#555;
+white-space:pre-wrap;
+margin-bottom:25px;
+}
+
+/* المعلومات */
+
+.info-box{
+background:#f7f8fa;
+border-radius:12px;
+padding:18px;
+margin-bottom:25px;
+}
+
+.info-row{
+padding:9px 0;
+font-size:16px;
+border-bottom:1px solid #e5e5e5;
+}
+
+.info-row:last-child{
+border-bottom:0;
+}
+
+/* الأزرار */
+
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.action-button{
+flex:1;
+min-width:180px;
+padding:14px;
+border:0;
+border-radius:10px;
+text-align:center;
+text-decoration:none;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.call{
+background:#173b68;
+color:white;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
+}
+
+.back-button{
+background:#eee;
+color:#222;
+}
+
+/* التحميل */
+
+.loading{
+background:white;
+padding:50px;
+border-radius:15px;
+text-align:center;
+font-size:18px;
+color:#777;
+}
+
+/* الخطأ */
+
+.error{
+background:white;
+padding:50px 20px;
+border-radius:15px;
+text-align:center;
+color:#b51f2a;
+font-size:18px;
+}
+
+/* بدون صورة */
+
+.no-image{
+height:400px;
+background:#eef2f7;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:80px;
+}
+
+/* الهاتف */
+
+@media(max-width:700px){
+
+.header{
+gap:10px;
+}
+
+.logo{
+font-size:18px;
+}
+
+.back{
+font-size:14px;
+padding:8px 12px;
+}
+
+.container{
+margin:20px auto;
+padding:0 12px;
+}
+
+.main-image{
+height:300px;
+}
+
+.no-image{
+height:280px;
+}
+
+.content{
+padding:20px;
+}
+
+.title{
+font-size:24px;
+}
+
+.price{
+font-size:23px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+.action-button{
+width:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="header">
+
+<div class="logo">
+فلسطين <span>بلاتفورم</span>
+</div>
+
+<a href="ads.html" class="back">
+← العودة للإعلانات
+</a>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<div id="pageContent">
+
+<div class="loading">
+⏳ جاري تحميل الإعلان...
+</div>
+
+</div>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+/* =========================
+   إعداد Supabase
+========================= */
+
+const SUPABASE_URL =
+"https://sesbumfedusbjevbsyzl.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
+
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY,
+{
+auth:{
+persistSession:true,
+autoRefreshToken:true,
+detectSessionInUrl:true
+}
+}
+);
+
+
+/* =========================
+   الحصول على ID الإعلان
+========================= */
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const adId =
+params.get("id");
+
+
+/* =========================
+   عناصر الصفحة
+========================= */
+
+const pageContent =
+document.getElementById(
+"pageContent"
+);
+
+
+/* =========================
+   تحميل الإعلان
+========================= */
+
+async function loadAd(){
+
+if(!adId){
+
+showError(
+"لم يتم تحديد الإعلان."
+);
+
+return;
+
+}
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("ads")
+.select("*")
+.eq("id",adId)
+.single();
+
+
+if(error){
+
+console.error(error);
+
+showError(
+"لم يتم العثور على الإعلان."
+);
+
+return;
+
+}
+
+
+displayAd(data);
+
+}
+
+
+/* =========================
+   عرض الإعلان
+========================= */
+
+function displayAd(ad){
+
+pageContent.innerHTML="";
+
+
+const card =
+document.createElement("div");
+
+card.className=
+"ad-details";
+
+
+/* =========================
+   معرض الصور
+========================= */
+
+const gallery =
+document.createElement("div");
+
+gallery.className=
+"gallery";
+
+
+let images=[];
+
+
+if(
+ad.image_urls &&
+Array.isArray(ad.image_urls)
+){
+
+images=
+ad.image_urls.filter(
+url =>
+typeof url === "string" &&
+url.trim() !== ""
+);
+
+}
+
+
+if(images.length > 0){
+
+const mainImage =
+document.createElement("img");
+
+mainImage.className=
+"main-image";
+
+mainImage.src=
+images[0];
+
+mainImage.alt=
+ad.title || "صورة الإعلان";
+
+gallery.appendChild(
+mainImage
+);
+
+
+/* الصور المصغرة */
+
+if(images.length > 1){
+
+const thumbnails =
+document.createElement("div");
+
+thumbnails.className=
+"thumbnails";
+
+
+images.forEach(
+function(url,index){
+
+const thumb =
+document.createElement("img");
+
+thumb.className=
+"thumbnail";
+
+if(index===0){
+
+thumb.classList.add(
+"active"
+);
+
+}
+
+thumb.src=url;
+
+thumb.alt=
+"صورة " +
+(index+1);
+
+
+thumb.onclick=
+function(){
+
+mainImage.src=url;
+
+document
+.querySelectorAll(
+".thumbnail"
+)
+.forEach(
+item =>
+item.classList.remove(
+"active"
+)
+);
+
+thumb.classList.add(
+"active"
+);
+
+};
+
+
+thumbnails.appendChild(
+thumb
+);
+
+}
+);
+
+
+gallery.appendChild(
+thumbnails
+);
+
+}
+
+}
+else{
+
+const noImage =
+document.createElement("div");
+
+noImage.className=
+"no-image";
+
+noImage.textContent=
+"📷";
+
+gallery.appendChild(
+noImage
+);
+
+}
+
+
+card.appendChild(
+gallery
+);
+
+
+/* =========================
+   محتوى الإعلان
+========================= */
+
+const content =
+document.createElement("div");
+
+content.className=
+"content";
+
+
+/* العنوان */
+
+const title =
+document.createElement("h1");
+
+title.className=
+"title";
+
+title.textContent=
+ad.title || "بدون عنوان";
+
+content.appendChild(
+title
+);
+
+
+/* التصنيف */
+
+if(ad.category){
+
+const category =
+document.createElement("div");
+
+category.className=
+"category";
+
+category.textContent=
+ad.category;
+
+content.appendChild(
+category
+);
+
+}
+
+
+/* السعر */
+
+if(
+ad.price !== null &&
+ad.price !== undefined
+){
+
+const price =
+document.createElement("div");
+
+price.className=
+"price";
+
+price.textContent=
+"💰 " +
+Number(ad.price)
+.toLocaleString("ar") +
+" شيكل";
+
+content.appendChild(
+price
+);
+
+}
+
+
+/* الوصف */
+
+const descriptionTitle =
+document.createElement("h2");
+
+descriptionTitle.className=
+"description-title";
+
+descriptionTitle.textContent=
+"📝 وصف الإعلان";
+
+content.appendChild(
+descriptionTitle
+);
+
+
+const description =
+document.createElement("div");
+
+description.className=
+"description";
+
+description.textContent=
+ad.description ||
+"لا يوجد وصف لهذا الإعلان.";
+
+content.appendChild(
+description
+);
+
+
+/* =========================
+   معلومات الإعلان
+========================= */
+
+const infoBox =
+document.createElement("div");
+
+infoBox.className=
+"info-box";
+
+
+if(ad.city){
+
+const city =
+document.createElement("div");
+
+city.className=
+"info-row";
+
+city.textContent=
+"📍 المحافظة / المدينة: " +
+ad.city;
+
+infoBox.appendChild(
+city
+);
+
+}
+
+
+if(ad.phone){
+
+const phone =
+document.createElement("div");
+
+phone.className=
+"info-row";
+
+phone.textContent=
+"📞 رقم الهاتف: " +
+ad.phone;
+
+infoBox.appendChild(
+phone
+);
+
+}
+
+
+if(ad.created_at){
+
+const date =
+new Date(ad.created_at);
+
+const dateText =
+date.toLocaleDateString(
+"ar-PS",
+{
+year:"numeric",
+month:"long",
+day:"numeric"
+}
+);
+
+const dateRow =
+document.createElement("div");
+
+dateRow.className=
+"info-row";
+
+dateRow.textContent=
+"📅 تاريخ النشر: " +
+dateText;
+
+infoBox.appendChild(
+dateRow
+);
+
+}
+
+
+content.appendChild(
+infoBox
+);
+
+
+/* =========================
+   الأزرار
+========================= */
+
+const buttons =
+document.createElement("div");
+
+buttons.className=
+"buttons";
+
+
+if(ad.phone){
+
+/* إزالة المسافات والرموز */
+
+let phone =
+String(ad.phone)
+.replace(/\s+/g,"")
+.replace(/-/g,"");
+
+
+/* إذا كان الرقم يبدأ بـ 0 */
+
+let internationalPhone =
+phone;
+
+if(phone.startsWith("0")){
+
+internationalPhone =
+"970" +
+phone.substring(1);
+
+}
+
+
+/* اتصال */
+
+const call =
+document.createElement("a");
+
+call.className=
+"action-button call";
+
+call.href=
+"tel:" + phone;
+
+call.textContent=
+"📞 اتصال";
+
+buttons.appendChild(
+call
+);
+
+
+/* واتساب */
+
+const whatsapp =
+document.createElement("a");
+
+whatsapp.className=
+"action-button whatsapp";
+
+whatsapp.href=
+"https://wa.me/" +
+internationalPhone;
+
+whatsapp.target="_blank";
+
+whatsapp.rel=
+"noopener noreferrer";
+
+whatsapp.textContent=
+"💬 واتساب";
+
+buttons.appendChild(
+whatsapp
+);
+
+}
+
+
+/* العودة */
+
+const back =
+document.createElement("a");
+
+back.className=
+"action-button back-button";
+
+back.href=
+"ads.html";
+
+back.textContent=
+"← العودة للإعلانات";
+
+buttons.appendChild(
+back
+);
+
+
+content.appendChild(
+buttons
+);
+
+
+card.appendChild(
+content
+);
+
+pageContent.appendChild(
+card
+);
+
+}
+
+
+/* =========================
+   رسالة الخطأ
+========================= */
+
+function showError(message){
+
+pageContent.innerHTML =
+'<div class="error">' +
+escapeHTML(message) +
+'<br><br>' +
+'<a href="ads.html" class="back-button action-button">← العودة للإعلانات</a>' +
+'</div>';
+
+}
+
+
+/* =========================
+   حماية النص
+========================= */
+
+function escapeHTML(text){
+
+return String(text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   تشغيل الصفحة
+========================= */
+
+loadAd();
+
+</script>
+
+</body>
+
+  </html>
