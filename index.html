@@ -12,6 +12,10 @@
 
 <style>
 
+/* =========================
+   الإعدادات العامة
+========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +28,10 @@ body {
     color: #222;
 }
 
-/* الهيدر */
+
+/* =========================
+   الهيدر
+========================= */
 
 header {
     background: #fff;
@@ -43,13 +50,21 @@ header {
     font-weight: bold;
 }
 
-/* منطقة الحساب */
+
+/* =========================
+   منطقة الحساب
+========================= */
 
 .account-area {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
+
+
+/* اسم المستخدم */
 
 .user-name {
     background: #f5f5f5;
@@ -57,9 +72,34 @@ header {
     border-radius: 20px;
     font-size: 14px;
     display: none;
+    white-space: nowrap;
 }
 
-/* زر تسجيل الدخول والخروج */
+
+/* =========================
+   زر إعلاناتي
+========================= */
+
+.my-ads-link {
+    background: #eee;
+    color: #111;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    display: none;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.my-ads-link:hover {
+    background: #ddd;
+}
+
+
+/* =========================
+   تسجيل الدخول / الخروج
+========================= */
 
 .login {
     background: #111;
@@ -70,9 +110,17 @@ header {
     border: none;
     cursor: pointer;
     font-size: 15px;
+    white-space: nowrap;
 }
 
-/* الصفحة الرئيسية */
+.login:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   الصفحة الرئيسية
+========================= */
 
 .hero {
     text-align: center;
@@ -91,7 +139,10 @@ header {
     margin-bottom: 25px;
 }
 
-/* البحث */
+
+/* =========================
+   البحث
+========================= */
 
 .search {
     display: flex;
@@ -105,6 +156,11 @@ header {
     border: 1px solid #ddd;
     border-radius: 0 8px 8px 0;
     font-size: 16px;
+    outline: none;
+}
+
+.search input:focus {
+    border-color: #111;
 }
 
 .search button {
@@ -114,9 +170,17 @@ header {
     color: white;
     border-radius: 8px 0 0 8px;
     cursor: pointer;
+    font-size: 15px;
 }
 
-/* الأقسام */
+.search button:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   الأقسام
+========================= */
 
 section {
     padding: 45px 6%;
@@ -127,6 +191,11 @@ section {
     margin-bottom: 30px;
     font-size: 27px;
 }
+
+
+/* =========================
+   التصنيفات
+========================= */
 
 .categories {
     display: grid;
@@ -142,7 +211,7 @@ section {
     border-radius: 15px;
     box-shadow: 0 3px 12px #0001;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s;
 }
 
 .card:hover {
@@ -160,9 +229,13 @@ section {
 
 .card p {
     color: #777;
+    line-height: 1.6;
 }
 
-/* عن المنصة */
+
+/* =========================
+   عن المنصة
+========================= */
 
 .about {
     background: white;
@@ -175,6 +248,11 @@ section {
     line-height: 1.9;
     color: #555;
 }
+
+
+/* =========================
+   الأزرار
+========================= */
 
 .buttons {
     margin-top: 25px;
@@ -195,7 +273,14 @@ section {
     color: #111;
 }
 
-/* الفوتر */
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* =========================
+   الفوتر
+========================= */
 
 footer {
     background: #111;
@@ -205,12 +290,16 @@ footer {
     margin-top: 30px;
 }
 
-/* الهاتف */
+
+/* =========================
+   الهاتف
+========================= */
 
 @media (max-width: 600px) {
 
     header {
         padding: 13px 4%;
+        gap: 10px;
     }
 
     .logo {
@@ -226,13 +315,26 @@ footer {
         padding: 7px 9px;
     }
 
+    .my-ads-link {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
     .login {
         padding: 9px 12px;
         font-size: 13px;
     }
 
+    .hero {
+        padding: 45px 15px;
+    }
+
     .hero h1 {
         font-size: 27px;
+    }
+
+    .hero p {
+        font-size: 16px;
     }
 
     .search {
@@ -244,6 +346,46 @@ footer {
         border-radius: 8px;
         width: 100%;
         margin: 3px 0;
+    }
+
+    section {
+        padding: 35px 4%;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+}
+
+
+/* =========================
+   هاتف صغير جدًا
+========================= */
+
+@media (max-width: 400px) {
+
+    header {
+        align-items: flex-start;
+    }
+
+    .account-area {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .user-name {
+        font-size: 11px;
+    }
+
+    .my-ads-link {
+        font-size: 11px;
+        padding: 7px 9px;
+    }
+
+    .login {
+        font-size: 12px;
+        padding: 8px 10px;
     }
 
 }
@@ -270,12 +412,25 @@ footer {
     <div class="account-area">
 
         <!-- اسم المستخدم -->
+
         <div id="userName"
              class="user-name">
         </div>
 
 
-        <!-- زر الحساب -->
+        <!-- إعلاناتي -->
+
+        <a href="my-ads.html"
+           class="my-ads-link"
+           id="myAdsLink">
+
+            📋 إعلاناتي
+
+        </a>
+
+
+        <!-- تسجيل الدخول / الخروج -->
+
         <a href="login.html"
            class="login"
            id="loginLink">
@@ -304,6 +459,8 @@ footer {
         محلات، عقارات، سيارات، وظائف، خدمات وإعلانات
     </p>
 
+
+    <!-- البحث -->
 
     <div class="search">
 
@@ -337,6 +494,8 @@ footer {
     <div class="categories">
 
 
+        <!-- المحلات -->
+
         <div class="card"
              onclick="location.href='shops.html'">
 
@@ -355,6 +514,8 @@ footer {
         </div>
 
 
+
+        <!-- العقارات -->
 
         <div class="card"
              onclick="location.href='realestate.html'">
@@ -375,6 +536,8 @@ footer {
 
 
 
+        <!-- السيارات -->
+
         <div class="card"
              onclick="location.href='cars.html'">
 
@@ -393,6 +556,8 @@ footer {
         </div>
 
 
+
+        <!-- الوظائف -->
 
         <div class="card"
              onclick="location.href='jobs.html'">
@@ -413,6 +578,8 @@ footer {
 
 
 
+        <!-- الخدمات -->
+
         <div class="card"
              onclick="location.href='services.html'">
 
@@ -431,6 +598,8 @@ footer {
         </div>
 
 
+
+        <!-- الإعلانات -->
 
         <div class="card"
              onclick="location.href='ads.html'">
@@ -479,6 +648,8 @@ footer {
 
     <div class="buttons">
 
+        <!-- إضافة إعلان -->
+
         <a href="ads.html"
            class="btn">
 
@@ -486,6 +657,8 @@ footer {
 
         </a>
 
+
+        <!-- إنشاء حساب -->
 
         <a href="register.html"
            class="btn secondary">
@@ -521,6 +694,10 @@ footer {
 
 <script>
 
+/* =========================
+   بيانات Supabase
+========================= */
+
 const SUPABASE_URL =
 "https://sesbumfedusbjevbsyzl.supabase.co";
 
@@ -528,23 +705,27 @@ const SUPABASE_KEY =
 "sb_publishable_0sJrbh73jLip3O5OtJkc_A_9F6OPWqR";
 
 
-/* إنشاء اتصال Supabase */
+/* =========================
+   إنشاء اتصال Supabase
+========================= */
 
-const supabaseClient = supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY,
-    {
-        auth: {
-            persistSession: true,
-            autoRefreshToken: true,
-            detectSessionInUrl: true
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY,
+        {
+            auth: {
+                persistSession: true,
+                autoRefreshToken: true,
+                detectSessionInUrl: true
+            }
         }
-    }
-);
+    );
 
 
-
-/* عناصر الصفحة */
+/* =========================
+   عناصر الصفحة
+========================= */
 
 const userName =
     document.getElementById("userName");
@@ -552,13 +733,19 @@ const userName =
 const loginLink =
     document.getElementById("loginLink");
 
+const myAdsLink =
+    document.getElementById("myAdsLink");
 
 
-/* ==================================
+/* =========================
    تحديث واجهة الحساب
-================================== */
+========================= */
 
 function updateAccountUI(user) {
+
+    /* =========================
+       المستخدم مسجل الدخول
+    ========================= */
 
     if (user) {
 
@@ -568,7 +755,7 @@ function updateAccountUI(user) {
         );
 
 
-        /* الحصول على الاسم */
+        /* الحصول على اسم المستخدم */
 
         const name =
             user.user_metadata?.name ||
@@ -586,7 +773,14 @@ function updateAccountUI(user) {
             "block";
 
 
-        /* تحويل الزر إلى تسجيل الخروج */
+        /* إظهار إعلاناتي */
+
+        myAdsLink.style.display =
+            "inline-block";
+
+
+        /* تحويل زر تسجيل الدخول
+           إلى تسجيل الخروج */
 
         loginLink.textContent =
             "تسجيل الخروج";
@@ -594,6 +788,13 @@ function updateAccountUI(user) {
         loginLink.href =
             "#";
 
+
+        /* حذف أي حدث سابق */
+
+        loginLink.onclick = null;
+
+
+        /* حدث تسجيل الخروج */
 
         loginLink.onclick =
             async function(event) {
@@ -603,6 +804,10 @@ function updateAccountUI(user) {
 
                 loginLink.textContent =
                     "جاري تسجيل الخروج...";
+
+
+                loginLink.style.pointerEvents =
+                    "none";
 
 
                 const {
@@ -618,17 +823,25 @@ function updateAccountUI(user) {
                         error
                     );
 
+
                     loginLink.textContent =
                         "تسجيل الخروج";
+
+
+                    loginLink.style.pointerEvents =
+                        "auto";
+
 
                     return;
                 }
 
 
-                /* بعد تسجيل الخروج */
+                /* إعادة واجهة الحساب */
 
                 updateAccountUI(null);
 
+
+                /* الانتقال لتسجيل الدخول */
 
                 window.location.href =
                     "login.html";
@@ -636,18 +849,31 @@ function updateAccountUI(user) {
             };
 
 
-    } else {
+    }
+
+    /* =========================
+       لا يوجد مستخدم
+    ========================= */
+
+    else {
 
         console.log(
             "لا يوجد مستخدم مسجل"
         );
 
 
-        /* إخفاء الاسم */
+        /* إخفاء اسم المستخدم */
 
-        userName.textContent = "";
+        userName.textContent =
+            "";
 
         userName.style.display =
+            "none";
+
+
+        /* إخفاء إعلاناتي */
+
+        myAdsLink.style.display =
             "none";
 
 
@@ -659,17 +885,20 @@ function updateAccountUI(user) {
         loginLink.href =
             "login.html";
 
-        loginLink.onclick = null;
+        loginLink.onclick =
+            null;
+
+        loginLink.style.pointerEvents =
+            "auto";
 
     }
 
 }
 
 
-
-/* ==================================
+/* =========================
    فحص المستخدم الحالي
-================================== */
+========================= */
 
 async function checkUser() {
 
@@ -682,6 +911,8 @@ async function checkUser() {
         await supabaseClient.auth.getUser();
 
 
+        /* يوجد خطأ */
+
         if (error) {
 
             console.error(
@@ -689,23 +920,29 @@ async function checkUser() {
                 error
             );
 
+
             updateAccountUI(null);
 
             return;
         }
 
 
+        /* تحديث الواجهة */
+
         updateAccountUI(
             data.user
         );
 
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         console.error(
             "خطأ:",
             error
         );
+
 
         updateAccountUI(null);
 
@@ -714,10 +951,9 @@ async function checkUser() {
 }
 
 
-
-/* ==================================
+/* =========================
    مراقبة حالة تسجيل الدخول
-================================== */
+========================= */
 
 supabaseClient.auth.onAuthStateChange(
     function(event, session) {
@@ -728,13 +964,18 @@ supabaseClient.auth.onAuthStateChange(
         );
 
 
-        if (session && session.user) {
+        if (
+            session &&
+            session.user
+        ) {
 
             updateAccountUI(
                 session.user
             );
 
-        } else {
+        }
+
+        else {
 
             updateAccountUI(
                 null
@@ -746,18 +987,16 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-
-/* ==================================
+/* =========================
    تشغيل فحص المستخدم
-================================== */
+========================= */
 
 checkUser();
 
 
-
-/* ==================================
+/* =========================
    البحث
-================================== */
+========================= */
 
 function search() {
 
@@ -768,6 +1007,8 @@ function search() {
         .trim();
 
 
+    /* إذا كان البحث فارغًا */
+
     if (value === "") {
 
         alert(
@@ -777,6 +1018,8 @@ function search() {
         return;
     }
 
+
+    /* البحث الشامل سيتم تطويره لاحقًا */
 
     alert(
         "سيتم تفعيل البحث الشامل قريباً 🔎"
@@ -789,4 +1032,4 @@ function search() {
 
 </body>
 
-      </html>
+</html>
